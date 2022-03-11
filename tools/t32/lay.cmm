@@ -1,0 +1,24 @@
+// t32 Sun May 31 11:33:27 2009
+
+ B::
+ 
+ TOOLBAR ON
+ STATUSBAR ON
+ WINPAGE.RESET
+ 
+ WINCLEAR
+ WINPOS 0% 0% 50% 69%
+ d.l
+
+ WINPOS 0% 70% 50% 30%
+ area
+
+ WINPOS 50% 0% 50% 30%
+ var.ref
+ 
+ do term
+
+ WINPAGE.SELECT P000     
+ 
+ ENDDO
+

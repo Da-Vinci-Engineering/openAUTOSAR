@@ -1,0 +1,9 @@
+*.d
+*.o
+*.elf
+*.map
+*.hex
+*.bak
+*~
+
+binaries/*
