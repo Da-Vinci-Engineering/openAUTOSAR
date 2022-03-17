@@ -16,7 +16,12 @@ add_custom_command(TARGET stm32examples
                    COMMAND ${CMAKE_C_COMPILER} ARGS -mthumb -mcpu=cortex-m3 -mfix-cortex-m3-ldrd -ggdb -ffunction-sections -g -O0 -std=gnu99 -MMD -Wall -fno-strict-aliasing -fno-builtin -I${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config -I${PROJECT_SOURCE_DIR}/include -I${PROJECT_SOURCE_DIR}/include/arm -I${PROJECT_SOURCE_DIR}/system/kernel/include -S ${PROJECT_SOURCE_DIR}/system/kernel/asm_offset.c
                    VERBATIM)
 
-#                   COMMAND gawk ARGS '/.*define/ { print $1 " " $2 " " gensub("#","","g",$3) } arch_offset.s' 
+add_custom_command(TARGET stm32examples 
+                   PRE_BUILD 
+                   COMMAND gawk ARGS /.*define/ \{ print $1 \" \" $2 \" \" gensub \( \"#\", \"\", \"g\", $3 \) \} asm_offset.s 
+                   VERBATIM)
+
+
 #target_include_directories(LogAndTraceDaemon PUBLIC ${PROJECT_SOURCE_DIR}/libComm/include)
 
 #target_link_libraries(LogAndTraceDaemon LINK_PUBLIC Diag Comm)
