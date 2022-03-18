@@ -9,3 +9,4 @@ set (CMAKE_C_FLAGS "-mthumb -mcpu=cortex-m3 -mfix-cortex-m3-ldrd -ggdb -ffunctio
 
 add_subdirectory(clib)
 add_subdirectory(common)
+add_subdirectory(arch/arm/arm_cm3)
