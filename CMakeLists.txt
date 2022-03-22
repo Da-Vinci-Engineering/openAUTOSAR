@@ -10,3 +10,8 @@ set (CMAKE_C_FLAGS "-mthumb -mcpu=cortex-m3 -mfix-cortex-m3-ldrd -ggdb -ffunctio
 add_subdirectory(clib)
 add_subdirectory(common)
 add_subdirectory(arch/arm/arm_cm3)
+add_subdirectory(boards/stm32_stm3210c/examples/os_simple)
+add_subdirectory(system)
+add_subdirectory(examples)
+add_subdirectory(diagnostic)
+add_subdirectory(arch/arm/arm_cm3/scripts)
