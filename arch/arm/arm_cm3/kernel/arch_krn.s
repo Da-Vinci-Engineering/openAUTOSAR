@@ -5,7 +5,7 @@
 # 9 "/home/marco/Projects/classic-platform/arch/arm/arm_cm3/kernel/arch_krn.sx"
 # 1 "./asm_offset.h" 1
 # 10 "/home/marco/Projects/classic-platform/arch/arm/arm_cm3/kernel/arch_krn.sx" 2
-# 1 "./arch_offset.h" 1
+# 1 "/home/marco/Projects/classic-platform/arch/arm/arm_cm3/kernel/arch_offset.h" 1
 # 11 "/home/marco/Projects/classic-platform/arch/arm/arm_cm3/kernel/arch_krn.sx" 2
 # 1 "/home/marco/Projects/classic-platform/arch/arm/arm_cm3/kernel/arch_stack.h" 1
 # 12 "/home/marco/Projects/classic-platform/arch/arm/arm_cm3/kernel/arch_krn.sx" 2

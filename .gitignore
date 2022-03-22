@@ -7,3 +7,6 @@
 *~
 
 binaries/*
+build/*
+boards/stm32_stm3210c/examples/os_simple/obj_stm32_stm3210c/*
+.vscode/*
