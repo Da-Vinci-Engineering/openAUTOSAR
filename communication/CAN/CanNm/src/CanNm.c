@@ -57,6 +57,7 @@
 
 /** @req CANNM083 */
 #include "CanIf.h"
+#include "CanIf_ConfigTypes.h"
 #include "Nm.h"
 
 #include <string.h>
@@ -143,7 +144,7 @@ Nm_ReturnType CanNm_PassiveStartUp( const NetworkHandleType nmChannelHandle ){
 }
 
 /** Request the network, since ECU needs to communicate on the bus. Network
-  * state shall be changed to ‘requested’ */
+  * state shall be changed to ï¿½requestedï¿½ */
 Nm_ReturnType CanNm_NetworkRequest( const NetworkHandleType nmChannelHandle ){
 	CANNM_VALIDATE_INIT(CANNM_SERVICEID_NETWORKREQUEST);
 	CANNM_VALIDATE_CHANNEL(nmChannelHandle, CANNM_SERVICEID_NETWORKREQUEST);
@@ -167,8 +168,8 @@ Nm_ReturnType CanNm_NetworkRequest( const NetworkHandleType nmChannelHandle ){
 	return NM_E_OK;
 }
 
-/** Release the network, since ECU doesn’t have to communicate on the bus. Network
-  * state shall be changed to ‘released’. */
+/** Release the network, since ECU doesnï¿½t have to communicate on the bus. Network
+  * state shall be changed to ï¿½releasedï¿½. */
 Nm_ReturnType CanNm_NetworkRelease( const NetworkHandleType nmChannelHandle ){
 	CANNM_VALIDATE_INIT(CANNM_SERVICEID_NETWORKRELEASE);
 	CANNM_VALIDATE_CHANNEL(nmChannelHandle, CANNM_SERVICEID_NETWORKRELEASE);

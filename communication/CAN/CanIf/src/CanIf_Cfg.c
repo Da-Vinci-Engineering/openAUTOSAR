@@ -31,11 +31,6 @@
 #endif
 #include <stdlib.h>
 
-// TEST
-#include "Can.h"
-#include "CanIf_ConfigTypes.h"
-
-
 // Imported structs from Can_Lcfg.c
 extern const Can_ControllerConfigType CanControllerConfigData[];
 extern const Can_ConfigSetType CanConfigSetData;
