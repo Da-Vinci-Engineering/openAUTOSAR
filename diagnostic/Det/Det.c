@@ -31,7 +31,12 @@
 #if defined(USE_DET)
 #include "Det.h"
 #endif
-#include "Cpu.h"
+
+/**************************************************
+ * Introduced to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#include "Cpu_ext.h"
 #include "MemMap.h" /** @req DET006 */
 
 #define DEBUG_LVL 1
@@ -135,7 +140,7 @@ void Det_ReportError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 Error
     if (detState == DET_STARTED) // No action is taken if the module is not started
     {
 #if ( DET_ENABLE_CALLBACKS == STD_ON )
-        uint32 old1; // 586 PC-Lint OK: fattar inte att den används i macrot.
+        uint32 old1; // 586 PC-Lint OK: fattar inte att den anvï¿½nds i macrot.
         Irq_Save(old1);
 
         for (uint32 i=0; i<DET_NUMBER_OF_CALLBACKS; i++)

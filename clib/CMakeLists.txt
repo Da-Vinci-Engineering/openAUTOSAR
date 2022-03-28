@@ -6,4 +6,8 @@
 
 add_library (clib  ${PROJECT_SOURCE_DIR}/clib/clib.c ${PROJECT_SOURCE_DIR}/clib/strtok_r.c ${PROJECT_SOURCE_DIR}/clib/clib_port.c)
 
-target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/clib ${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/include/arm/ ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/kernel/ ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config/)
+target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/clib) 
+target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/include) 
+target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/include/arm/) 
+target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/kernel/) 
+target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config/)

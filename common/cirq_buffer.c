@@ -33,7 +33,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "Cpu.h"
+//#include "Cpu.h"
+extern void Irq_Disable();
+extern void Irq_Enable();
+extern void Irq_Save(unsigned long _flags);
+extern void Irq_Restore(unsigned long _flags);
+
+extern void Irq_SuspendAll();
+extern void Irq_ResumeAll();
+extern void Irq_SuspendOs();
+extern void Irq_ResumeOs();
+
 #include "cirq_buffer.h"
 
 #ifdef _TEST_CIRQ_BUFFER_DYN_
