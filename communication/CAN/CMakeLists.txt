@@ -4,3 +4,4 @@
 
 add_subdirectory(CanIf)
 add_subdirectory(CanNm)
+add_subdirectory(CanTp)

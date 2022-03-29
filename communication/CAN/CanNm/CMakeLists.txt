@@ -9,14 +9,6 @@ target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanNm/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanIf/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/com_simple/config )
-#target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/drivers/Mcu/include )
-#target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/include )
-#target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/kernel )
-#target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config )
-#target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/CanDriver/include )
-
-
-
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanIf/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/drivers/Mcu/include )
