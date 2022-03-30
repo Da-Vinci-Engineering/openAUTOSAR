@@ -31,6 +31,15 @@ typedef enum {
 	COMM_FULL_COMMUNICATION = 2
 } ComM_ModeType;
 
+/*
+ * (C) DaVinci Engineering GmbH 2022
+ */
+/** @req COMM484  @req COMM190  @req COMM248 */
+typedef enum {
+	COMM_FIRSTUSER = 0,
+} ComM_UserHandleType;
+
+
 /** Initialization status of ComM. */
 typedef enum {
 	COMM_UNINIT,
@@ -43,7 +52,7 @@ typedef uint8 ComM_InhibitionStatusType;  /**< @req COMM496 */
 #define COMM_INHIBITION_STATUS_NONE					(0u)
 /** Wake Up inhibition active */
 #define COMM_INHIBITION_STATUS_WAKE_UP				(1u)
-/** Limit to “No Communication” mode active */
+/** Limit to ï¿½No Communicationï¿½ mode active */
 #define COMM_INHIBITION_STATUS_NO_COMMUNICATION		(uint8)(1u << 1)
 
 #endif /*COMM_TYPES_H*/

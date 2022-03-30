@@ -39,7 +39,7 @@
 #define COMM_SW_PATCH_VERSION	0
 
 /** @req COMM328  @req COMM456 */
-#include "ComM_Cfg.h"
+//#include "ComM_Cfg.h"
 
 /** Function call has been successfully but mode can not
   * be granted because of mode inhibition. */
