@@ -1,6 +1,4 @@
 #********************************************************************
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
-
-add_subdirectory(CanIf)
-add_subdirectory(CanNm)
+add_subdirectory(PDURouter)

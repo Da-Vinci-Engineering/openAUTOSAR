@@ -2,4 +2,5 @@
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
 add_subdirectory(CAN)
+add_subdirectory(ComServices)
 
