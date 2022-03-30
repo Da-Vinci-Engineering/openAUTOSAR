@@ -33,7 +33,12 @@
 #define MCU_AR_MINOR_VERSION     	2
 #define MCU_AR_PATCH_VERSION     	2
 
+/**************************************************
+ * Introduced to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
 #include "Cpu.h"
+
 #include "irq_types.h"
 #include "Std_Types.h"
 #include "Mcu_Cfg.h"

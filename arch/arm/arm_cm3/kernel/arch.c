@@ -19,7 +19,6 @@
 #include "arch_stack.h"
 #include "stm32f10x.h"
 
-
 /**
  * Function make sure that we switch to supervisor mode(rfi) before
  * we call a task for the first time.

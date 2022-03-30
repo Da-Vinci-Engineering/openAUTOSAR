@@ -32,7 +32,7 @@
 #define NM_SW_MINOR_VERSION	0
 #define NM_SW_PATCH_VERSION	0
 
-#include "Nm_Cfg.h"
+//#include "Nm_Cfg.h"
 
 /** Initializes the NM Interface. */
 /** @req NM030 */

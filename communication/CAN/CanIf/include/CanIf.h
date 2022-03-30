@@ -40,7 +40,9 @@
 #include "Det.h"
 #endif
 #include "CanIf_Types.h"
-#include "CanIf_SpecialPdus.h"
+// At the moment of porting th software to the CMake build system 
+// the inclusion of "CanIf_SpecialPdus.h" seems to be redundant
+//#include "CanIf_SpecialPdus.h"
 #include "CanIf_Cfg.h"
 
 

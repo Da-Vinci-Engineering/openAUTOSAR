@@ -27,7 +27,11 @@
 #include "Std_Types.h"
 #include "Os_Cfg.h"
 #include "MemMap.h"
-#include "Cpu.h"
+/**************************************************
+ * Introduced to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#include "Cpu_ext.h"
 #include "limits.h"
 #include <sys/queue.h>
 

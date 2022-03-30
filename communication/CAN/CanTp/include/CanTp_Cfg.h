@@ -31,6 +31,12 @@
 #define CANTP_VERSION_INFO_API          STD_ON   /**< Build version info API */
 #define CANTP_DEV_ERROR_DETECT          STD_ON
 
+/*****************************************
+ * Modification to compile the module
+ * (C) DaVinci Engineering GmbH 2022
+ ****************************************/
+#define CANTP_RXID_LIST_SIZE 10
+
 extern CanTp_ConfigType CanTpConfig;
 extern const CanTp_NSduType CanTpNSduConfigList[];
 

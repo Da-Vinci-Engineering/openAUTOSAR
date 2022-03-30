@@ -2,6 +2,7 @@
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
 
-add_subdirectory(EcuM)
-add_subdirectory(kernel)
-#add_subdirectory(SchM)
+add_subdirectory(CanIf)
+add_subdirectory(CanNm)
+add_subdirectory(CanTp)
+add_subdirectory(CanSM)
