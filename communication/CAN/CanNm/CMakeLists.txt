@@ -8,6 +8,7 @@ set (CMAKE_C_FLAGS "-mthumb -mcpu=cortex-m3 -mfix-cortex-m3-ldrd -ggdb -ffunctio
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanNm/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanIf/include )
+target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/communication/ComServices/PDURouter/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/com_simple/config )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/include )
 target_include_directories(CanNm PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanIf/include )
