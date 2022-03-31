@@ -24,7 +24,7 @@
 #include "Com_Internal.h"
 #include "Com_misc.h"
 #include "debug.h"
-#include "Cpu.h"
+#include "Cpu_ext.h"
 
 static void Com_ReadDataSegment(uint8 *dest, const uint8 *source, uint8 destByteLength,
 		Com_BitPositionType segmentStartBitOffset, uint8 segmentBitLength, boolean signedOutput);
@@ -393,7 +393,7 @@ static void Com_ReadDataSegment(uint8 *dest, const uint8 *source, uint8 destByte
  * Copies the <segmentBitLength> least significant bits from <signal> into <pdu>.
  * The bit segment is placed in <pdu> so that the most significant bit ends up
  * at <segmentStartBitOffset> from the msb of <pdu>.
- * <pduSignalMask> is cleared and written to contain a mask with 1´s where the
+ * <pduSignalMask> is cleared and written to contain a mask with 1ï¿½s where the
  * signal is located in the <pdu>.
  */
 void Com_WriteDataSegment(uint8 *pdu, uint8 *pduSignalMask, const uint8 *signalDataPtr, uint8 destByteLength,

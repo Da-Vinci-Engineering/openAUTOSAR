@@ -24,7 +24,7 @@
 #include "Com_misc.h"
 #include <string.h>
 #include "debug.h"
-#include "Cpu.h"
+#include "Cpu_ext.h"
 
 #define timerDec(timer) \
 	if (timer > 0) { \

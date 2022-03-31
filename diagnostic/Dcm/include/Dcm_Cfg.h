@@ -34,4 +34,22 @@
 #define DCM_TASK_TIME					TBD			// Time for periodic task (in ms).
 #define DCM_PAGEDBUFFER_ENABLED			STD_OFF		// Enable/disable page buffer mechanism (currently only disabled supported)
 
+
+/********************************************************************
+ * TODO
+ * The constants below are not defined in the code base from Arctic
+ * Their values have to be checked in real Projects
+ * (C) DaVinci Engineering GmbH 2022
+ *******************************************************************/
+#define DCM_DSL_RX_PDU_ID_LIST_LENGTH 10
+#define DCM_DSL_NOF_TX_PDU_ID 10
+#define DCM_MAIN_FUNCTION_PERIOD_TIME_MS 10
+#define DCM_LIMITNUMBER_PERIODDATA 100
+#define DCM_MAX_DDD_NUMBER 100
+#define DCM_MAX_DDDSOURCE_NUMBER 100
+#define DCM_PERIODICTRANSMIT_SLOW     10
+#define DCM_PERIODICTRANSMIT_MEDIUM   20
+#define DCM_PERIODICTRANSMIT_FAST     40
+
+
 #endif /*DCM_CFG_H_*/

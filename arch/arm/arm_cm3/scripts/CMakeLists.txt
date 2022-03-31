@@ -24,12 +24,12 @@ add_custom_target( os_simple.elf ALL
     -L${PROJECT_SOURCE_DIR}/build/boards/stm32_stm3210c/examples/os_simple
     -L${PROJECT_SOURCE_DIR}/build/clib
     -L${PROJECT_SOURCE_DIR}/build/common
-    -L${PROJECT_SOURCE_DIR}/build/diagnostic
+    -L${PROJECT_SOURCE_DIR}/build/diagnostic/Dcm
     -L${PROJECT_SOURCE_DIR}/build/examples/os_simple
     -L${PROJECT_SOURCE_DIR}/build/system/EcuM
     -L${PROJECT_SOURCE_DIR}/build/system/kernel
     --start-group
-    -lexampleCfg -lclib -lcommon -lDiagnostic -los_simple
+    -lexampleCfg -lclib -lcommon -lDcm -los_simple
     -lEcuM -lKernel -lMcu -larmCm3
     -lgcc -lc  
     --end-group
