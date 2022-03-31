@@ -17,3 +17,4 @@ target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm321
 target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/include/arm/arm_cm3/)
 target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/system/SchM)
 target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/system/kernel/include)
+target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/system/SchM/include)
