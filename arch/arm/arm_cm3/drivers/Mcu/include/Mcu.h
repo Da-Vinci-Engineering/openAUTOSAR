@@ -37,7 +37,7 @@
  * Introduced to prevent board dependency
  * (C) DaVinci Engineering GmbH 2022
  *************************************************/ 
-#include "Cpu.h"
+#include "Cpu_ext.h"
 
 #include "irq_types.h"
 #include "Std_Types.h"

@@ -29,7 +29,7 @@
 #include "Com_Internal.h"
 #include "Com_misc.h"
 #include "debug.h"
-#include "Cpu.h"
+#include "Cpu_ext.h"
 
 
 /* TODO: Better way to get endianness across all compilers? */

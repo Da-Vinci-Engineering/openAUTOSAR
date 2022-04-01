@@ -43,3 +43,8 @@ void Irq_ResumeOs()
 {
  	Irq_Enable();
 }
+
+uint8_t ilog2(x)
+{
+  return __builtin_ffs(x)-1;
+}

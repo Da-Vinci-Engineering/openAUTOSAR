@@ -30,7 +30,7 @@
 #include "PduR_Types.h" // OBD: for preemption cancel PDUR tx
 #include "PduR.h"       // OBD: for cancel
 #include "ComStack_Types.h"
-#include "Cpu.h"
+#include "Cpu_ext.h"
 //#define USE_DEBUG_PRINTF
 #include "debug.h"
 

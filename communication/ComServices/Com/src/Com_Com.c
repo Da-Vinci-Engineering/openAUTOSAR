@@ -31,7 +31,7 @@
 #if defined(USE_DET)
 #include "Det.h"
 #endif
-#include "Cpu.h"
+#include "Cpu_ext.h"
 
 Com_BufferPduStateType Com_BufferPduState[COM_N_IPDUS];
 

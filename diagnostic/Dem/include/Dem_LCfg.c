@@ -22,16 +22,61 @@
 
 #warning "This default file may only be used as an example!"
 
-#ifndef DCM_CFG_H_
-#define DCM_CFG_H_
-/*
- * DCM General
- */
-#define DCM_VERSION_INFO_API    		STD_ON		// Activate/Deactivate ver info API.
-#define DCM_DEV_ERROR_DETECT			STD_ON		// Activate/Deactivate Dev Error Detection and Notification.
-#define DCM_REQUEST_INDICATION_ENABLED	STD_ON		// Activate/Deactivate indication request mechanism.
-#define DCM_RESPOND_ALL_REQUEST			STD_ON		// Activate/Deactivate response on SID 0x40-0x7f and 0xc0-0xff.
-#define DCM_TASK_TIME					TBD			// Time for periodic task (in ms).
-#define DCM_PAGEDBUFFER_ENABLED			STD_OFF		// Enable/disable page buffer mechanism (currently only disabled supported)
+#include "Dem.h"
 
-#endif /*DCM_CFG_H_*/
+/*********************
+ * DEM Configuration *
+ *********************/
+
+
+/*
+ * Classes of extended data record
+ */
+
+
+/*
+ * Classes of extended data
+ */
+
+
+/*
+ * Classes of freeze frames
+ */
+
+
+/*
+ * Classes of PreDebounce algorithms
+ */
+
+
+/*
+ * Classes of event
+ */
+
+
+/*
+ * Event parameter list
+ */
+const Dem_EventParameterType EventParameter[] = {
+		{
+				.Arc_EOL  = TRUE
+		}
+};
+
+
+/*
+ * DEM's config set
+ */
+const Dem_ConfigSetType DEM_ConfigSet = {
+		.EventParameter = EventParameter,
+//		.DTCClassType = NULL,		TODO: Add later
+//		.GroupOfDtc = NULL,			TODO: Add later
+//		.OemIdClass = NULL			TODO: Add later
+};
+
+/*
+ * DEM's config
+ */
+const Dem_ConfigType DEM_Config = {
+	.ConfigSet = &DEM_ConfigSet,
+};
