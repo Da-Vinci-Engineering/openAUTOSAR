@@ -142,7 +142,7 @@
 #define ECUM_AR_VERSION 	(ECUM_AR_MAJOR_VERSION*10000)+\
 							(ECUM_AR_MINOR_VERSION*100)+ECUM_AR_PATCH_VERSION
 
-//#include "EcuM_Cfg.h"
+#include "EcuM_Cfg.h"
 
 #if ( ECUM_VERSION_INFO_API == STD_ON)
 #define EcuM_GetVersionInfo(_vi) STD_GET_VERSION_INFO(_vi,ECUM)

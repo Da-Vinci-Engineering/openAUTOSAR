@@ -9,6 +9,12 @@
 #ifndef CANNM_CFG_H_
 #define CANNM_CFG_H_
 
+/********************************************************************
+ * TODO
+ * The constants below are not defined in the code base from Arctic
+ * Their values have to be checked in real Projects
+ * (C) DaVinci Engineering GmbH 2022
+ *******************************************************************/
 #define CANNM_CHANNEL_COUNT 10
 
 #endif // CANNM_CFG_H_

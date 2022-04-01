@@ -3,5 +3,7 @@
 #*******************************************************************/
 
 add_subdirectory(EcuM)
+add_subdirectory(Nm)
 add_subdirectory(kernel)
-#add_subdirectory(SchM)
+add_subdirectory(ComM)
+add_subdirectory(SchM)

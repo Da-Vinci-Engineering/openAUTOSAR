@@ -16,4 +16,6 @@ target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/i
 target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/kernel )
 target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config )
 target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/com_simple/config )
-target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/system/SchM )
+target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/system/SchM/include )
+target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/system/ComM/include )
+
