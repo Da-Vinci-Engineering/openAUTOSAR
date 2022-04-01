@@ -31,13 +31,20 @@ typedef enum {
 	COMM_FULL_COMMUNICATION = 2
 } ComM_ModeType;
 
-/*
+/********************************************************************
+ * TODO
+ * Definitions and constants below 
+ * are not defined in the code base from Arctic
+ * Their values have to be checked in real Projects
  * (C) DaVinci Engineering GmbH 2022
- */
+ *******************************************************************/
 /** @req COMM484  @req COMM190  @req COMM248 */
 typedef enum {
 	COMM_FIRSTUSER = 0,
 } ComM_UserHandleType;
+#define COMM_CHANNEL_COUNT   10			
+#define COMM_USER_COUNT   10			
+#define COMM_T_MIN_FULL_COM_MODE_DURATION   10			
 
 
 /** Initialization status of ComM. */
