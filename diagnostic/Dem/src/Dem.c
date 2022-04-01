@@ -53,7 +53,7 @@
 #include "NvM.h"
 //#include "SchM_Dem.h"
 #include "MemMap.h"
-#include "Cpu.h"
+#include "Cpu_ext.h"
 #include "Dem_Types.h"
 #include "Dem_Lcfg.h"
 
