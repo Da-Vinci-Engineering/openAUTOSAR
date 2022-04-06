@@ -42,4 +42,16 @@
 extern CanTp_ConfigType CanTpConfig;
 extern const CanTp_NSduType CanTpNSduConfigList[];
 
+
+/*
+ * Interfaces for callback notifications from PduR and ComM (8.4)
+ */
+extern BufReq_ReturnType Dcm_ProvideRxBuffer(PduIdType dcmRxPduId, PduLengthType tpSduLength, PduInfoType **pduInfoPtr);
+extern void Dcm_RxIndication(PduIdType dcmRxPduId, NotifResultType result);
+extern BufReq_ReturnType Dcm_ProvideTxBuffer(PduIdType dcmTxPduId, PduInfoType **pduInfoPtr, PduLengthType length);
+extern void Dcm_TxConfirmation(PduIdType dcmTxPduId, NotifResultType result);
+extern void Dcm_ComM_NoComModeEntered(void);
+extern void Dcm_ComM_SilentComModeEntered(void);
+extern void Dcm_ComM_FullComModeEntered(void);
+
 #endif /* CANTP_CFG_H_ */
