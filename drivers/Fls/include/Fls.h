@@ -68,17 +68,6 @@
 #define FLS_SET_MODE_ID				0x09
 #define FLS_GET_VERSION_INFO_ID		0x10
 
-// Used as address offset from the configured flash base address to access a certain
-// flash memory area.
-typedef uint32 Fls_AddressType;
-
-// Specifies the number of bytes to read/write/erase/compare
-//
-// Note!
-// Shall be the same type as Fls_AddressType because of
-// arithmetic operations. Size depends on target platform and
-// flash device.
-typedef uint32 Fls_LengthType;
 
 #if !defined(FLS_INCLUDE_FILE)
 #include "Fls_Cfg.h"

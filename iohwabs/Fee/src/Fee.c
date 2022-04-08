@@ -87,13 +87,23 @@
 #include "Fee.h"
 #include "Fee_Cbk.h"
 #include "Fee_Memory_Cfg.h"
-#include "Fls.h"
+/**************************************************
+ * Introduced to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#include "Fls_ConfigTypes.h"
+#include "Fls_Cfg.h"
+#include "Fee_ext.h"
 #if defined(USE_DEM)
 #include "Dem.h"
 #endif
 #include <string.h>
 #include "MemMap.h"
-#include "Cpu.h"
+/**************************************************
+ * Introduced to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#include "Cpu_ext.h"
 
 #include <stdio.h>
 

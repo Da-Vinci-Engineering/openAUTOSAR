@@ -38,13 +38,17 @@
 #include "Std_Types.h"
 #include "MemIf_Cfg.h"
 
-#if defined(USE_FEE)
-#include "Fee.h"
-#endif
+/********************************************************************
+ * USE_FEE and USE_ES are also tested in MemIf_Cfg.h
+ * (C) DaVinci Engineering GmbH 2022
+ *******************************************************************/
+//#if defined(USE_FEE)
+//#include "Fee.h"
+//#endif
 
-#if defined(USE_EA)
-#include "Ea.h"
-#endif
+// #if defined(USE_EA)
+// #include "Ea.h"
+// #endif
 
 #if (MEMIF_VERSION_INFO_API == STD_ON)
 #define _MemIf_GetVersionInfo(_vi) STD_GET_VERSION_INFO(_vi, MEMIF)
