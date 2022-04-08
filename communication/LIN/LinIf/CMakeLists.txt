@@ -6,6 +6,7 @@ add_library ( LinIf STATIC src/LinIf.c
 
 set (CMAKE_C_FLAGS "-mthumb -mcpu=cortex-m3 -mfix-cortex-m3-ldrd -ggdb -ffunction-sections -fno-builtin -DSTM32F10X_CL -DUSE_PDUR -DCFG_ARM_CM3 -DUSE_COM -DUSE_DET")
 target_include_directories(LinIf PUBLIC ${PROJECT_SOURCE_DIR}/communication/LIN/LinIf/include )
+target_include_directories(LinIf PUBLIC ${PROJECT_SOURCE_DIR}/communication/LIN/LinSM/include )
 target_include_directories(LinIf PUBLIC ${PROJECT_SOURCE_DIR}/include )
 target_include_directories(LinIf PUBLIC ${PROJECT_SOURCE_DIR}/system/ComM/include )
 target_include_directories(LinIf PUBLIC ${PROJECT_SOURCE_DIR}/debug/Det/include )

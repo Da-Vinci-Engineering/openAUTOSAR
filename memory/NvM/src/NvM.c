@@ -244,7 +244,7 @@
 #if defined(USE_DEM)
 #include "Dem.h"
 #endif
-#include "MemIf.h"
+#include "MemIf_Types.h"
 //#include "SchM_NvM.h"
 #include "MemMap.h"
 #include "cirq_buffer.h"
@@ -253,7 +253,15 @@
 #include "io.h"
 #include "Crc.h"
 #include <string.h>
-#include "Cpu.h"
+/********************************************************************
+ * TODO
+ * The following modification is part of the attempt at decoupling
+ * the modules belonging to differen blocks in the AUTOSAR
+ * architecture
+ * (C) DaVinci Engineering GmbH 2022
+ *******************************************************************/
+#include "Cpu_ext.h"
+#include "NvM_ext.h"
 
 #define FIXME		0
 
