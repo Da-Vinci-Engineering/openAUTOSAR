@@ -36,9 +36,16 @@
 #define NVM_MAX_NUMBER_OF_WRITE_RETRIES	2						// 0..7
 #define NVM_POLLING_MODE				STD_OFF					// OFF..ON
 #define NVM_SIZE_IMMEDIATE_JOB_QUEUE	0						// 1..255
-#define NVM_SIZE_STANDARD_JOB_QUEUE		0						// 1..255
+#define NVM_SIZE_STANDARD_JOB_QUEUE		20						// 1..255
 
 #define NVM_NUM_OF_NVRAM_BLOCKS			0
 
+/********************************************************************
+ * TODO
+ * The constants below are not defined in the code base from Arctic
+ * Their values have to be checked in real Projects
+ * (C) DaVinci Engineering GmbH 2022
+ *******************************************************************/
+#define NVM_MAX_BLOCK_LENGTH 10
 
 #endif /*NVM_CFG_H_*/

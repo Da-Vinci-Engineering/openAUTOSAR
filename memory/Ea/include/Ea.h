@@ -24,8 +24,8 @@
 #define EA_AR_MINOR_VERSION     0
 #define EA_AR_PATCH_VERSION     2
 
-#include "Eep.h"
-#include "Ea_Cfg.h"
+//#include "Eep.h"
+//#include "Ea_Cfg.h"
 #include "Modules.h"
 
 #define EA_MODULE_ID            MODULE_ID_EA
