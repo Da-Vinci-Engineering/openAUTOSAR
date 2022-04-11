@@ -23,14 +23,19 @@
 #include "Ea_Cbk.h"
 #include "Ea_Types.h"
 
-#include "Cpu.h"
+/**************************************************
+ * Introduced to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#include "Ea_ext.h"
+#include "Cpu_ext.h"
 //#include "Mcu.h"
 
 /** @req EA011 */
 /** @req EA045 */
 #if (STD_ON == EA_DEV_ERROR_DETECT)
 #if defined(USE_DET)
-#include "Det.h"
+extern void Det_ReportError( uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId); 
 #endif
 #endif
 

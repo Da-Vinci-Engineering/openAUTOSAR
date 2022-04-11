@@ -4,5 +4,5 @@
 
 add_subdirectory(Fee)
 add_subdirectory(MemIf)
-#add_subdirectory(Ea)
+add_subdirectory(Ea)
 #add_subdirectory(Eep)

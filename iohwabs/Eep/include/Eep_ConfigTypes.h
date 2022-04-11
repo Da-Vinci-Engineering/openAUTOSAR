@@ -12,6 +12,10 @@
  * EepSpiReference:				1..*  Ref to SPI sequence
  */
 
+
+typedef uint32_t Eep_AddressType;
+typedef Eep_AddressType Eep_LengthType;
+
 #if defined(EEP_USES_EXTERNAL_DRIVER)
 typedef struct {
   /* Reference to SPI sequence (required for external EEPROM drivers).
@@ -22,12 +26,12 @@ typedef struct {
    * =======
    *   const Eep_ConfigType EepConfigData =
    *   {
-   *    …
+   *    ï¿½
    *    EepCmdChannel    = EEP_SPI_CH_COMMAND,
    *    EepAdrChannel    = EEP_SPI_CH_ADDRESS,
-   *    …
+   *    ï¿½
    *    EepWriteSequence = EEP_SPI_SEQ_WRITE,
-   *    …
+   *    ï¿½
    *  };
    *
    *
