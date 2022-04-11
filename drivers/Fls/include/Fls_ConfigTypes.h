@@ -16,6 +16,27 @@
 #ifndef FLS_CONFIGTYPES_H_
 #define FLS_CONFIGTYPES_H_
 
+#include <stdint.h>
+
+// Used as address offset from the configured flash base address to access a certain
+// flash memory area.
+/**************************************************
+ * Moved from fls.h to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+typedef uint32_t Fls_AddressType;
+
+// Specifies the number of bytes to read/write/erase/compare
+//
+// Note!
+// Shall be the same type as Fls_AddressType because of
+// arithmetic operations. Size depends on target platform and
+// flash device.
+/**************************************************
+ * Moved from fls.h to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+typedef uint32_t Fls_LengthType;
 
 #if (USE_FLS_INFO==STD_ON)
 

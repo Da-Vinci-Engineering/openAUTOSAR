@@ -28,11 +28,11 @@
 #include "MemIf_Types.h"
 
 #if defined(USE_FEE)
-#include "Fee.h"
+#include "MemIf_Fee_ext.h"
 #endif
 
 #if defined(USE_EA)
-#include "Ea.h"
+//#include "Ea.h"
 #endif
 
 

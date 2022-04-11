@@ -17,7 +17,7 @@ add_subdirectory(diagnostic)
 add_subdirectory(communication)
 add_subdirectory(memory)
 #add_subdirectory(watchdog)
-#add_subdirectory(iohwabs)
+add_subdirectory(iohwabs)
 add_subdirectory(arch/arm/arm_cm3)
 add_subdirectory(arch/arm/arm_cm3/scripts)
 
