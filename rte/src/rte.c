@@ -13,13 +13,7 @@
  * for more details.
  * -------------------------------- Arctic Core ------------------------------*/
 
-
-
-
-
-
-
-
+#include "Std_Types.h"
 
 /* This file contains all runnable and instansiation */
 
@@ -30,7 +24,7 @@
 //<void|Std_ReturnType> Rte_<name>( [IN Rte_Instance <instance>], [role parameters])
 
 // Triggered by RTEEvent(always) 
-void Rte_Runnable_10ms( Rte_Instance ) {
+void Rte_Runnable_10ms( int Rte_Instance ) {
 	
 } 
 
@@ -60,12 +54,12 @@ void Doors( void ) {
 }
 
 // Call in runnable
-void Doors_periodic( void ) {
-	// read the door status from I/O HW
-	int door_status;
-	Rte_Read_io_
-	Rte_IRead_Runnable_10ms_io_ 
+// void Doors_periodic( void ) {
+// 	// read the door status from I/O HW
+// 	int door_status;
+// 	Rte_Read_io_
+// 	Rte_IRead_Runnable_10ms_io_ 
 	
-}
+// }
 
 
