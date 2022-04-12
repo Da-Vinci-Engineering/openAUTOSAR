@@ -25,6 +25,13 @@
 //lint -emacro(904,VALIDATE,VALIDATE_NO_RETURNVAL)
 
 #include "WdgIf.h"
+//#include "WdgIf_Cfg.h"
+/**************************************************
+ * Introduced to prevent board dependency
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#include "WdgIf_ext.h"
+
 #if defined(USE_DET)
 #include "Det.h"
 #endif
@@ -53,11 +60,23 @@ Std_ReturnType WdgIf_SetMode (uint8 DeviceIndex, WdgIf_ModeType Mode)
 	Std_ReturnType ret = E_NOT_OK;
 	DET_VALIDATE(( DeviceIndex < WDGIF_NUMBER_OF_DEVICES ), WDGIF_SETMODE_ID, WDGIF_E_PARAM_DEVICE);
 
-	return WdgIfConfig.WdgIf_Device[DeviceIndex].setMode(Mode);
+    /********************************************************************
+	 * TODO Original code from Arctic modified to be compiled in C
+	 *      To be verified 
+     * (C) DaVinci Engineering GmbH 2022
+     *******************************************************************/
+	//return WdgIfConfig.WdgIf_Device[DeviceIndex].setMode(Mode);
+	return Wdg_SetMode (Mode);
 }
 
 void WdgIf_Trigger (uint8 DeviceIndex)
 {
 	DET_VALIDATE_NO_RETURNVAL( ( DeviceIndex < WDGIF_NUMBER_OF_DEVICES ), WDGIF_TRIGGER_ID, WDGIF_E_PARAM_DEVICE);
-	WdgIfConfig.WdgIf_Device[DeviceIndex].trigger();
+    /********************************************************************
+	 * TODO Original code from Arctic modified to be compiled in C
+	 *      To be verified 
+     * (C) DaVinci Engineering GmbH 2022
+     *******************************************************************/
+	//WdgIfConfig.WdgIf_Device[DeviceIndex].trigger();
+	Wdg_Trigger ();
 }

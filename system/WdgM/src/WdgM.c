@@ -291,16 +291,22 @@ Std_ReturnType WdgM_SetMode(WdgM_ModeType Mode) {
 		/* Write new mode to internal state. */
 		wdgMInternalState.WdgMActiveMode = Mode;
 
-		/* Pass mode to all watchdog instances. */
-		for (i = 0; i < wdgMInternalState.WdgM_ConfigPtr->WdgM_General->WdgM_NumberOfWatchdogs; i++) {
-			mode = wdgMInternalState.WdgM_ConfigPtr->WdgM_ConfigSet->WdgM_Mode[Mode].WdgM_Trigger[i].WdgM_WatchdogMode;
-			deviceIndex = wdgMInternalState.WdgM_ConfigPtr->WdgM_ConfigSet->WdgM_Mode[Mode].WdgM_Trigger[i].WdgM_WatchdogRef->WdgM_DeviceRef->WdgIf_DeviceIndex;
-			/** @req WDGM139 **/
-			if (E_NOT_OK == WdgIf_SetMode(deviceIndex, mode)) {
-				wdgMInternalState.WdgM_GlobalSupervisionStatus = WDGM_ALIVE_STOPPED;
-				ret = E_NOT_OK;
-			}
+		/* Pass mode to all watchdog instance. */
+		if (E_NOT_OK == WdgIf_SetMode(deviceIndex, mode)) {
+			wdgMInternalState.WdgM_GlobalSupervisionStatus = WDGM_ALIVE_STOPPED;
+			ret = E_NOT_OK;
 		}
+
+		// /* Pass mode to all watchdog instances. */
+		// for (i = 0; i < wdgMInternalState.WdgM_ConfigPtr->WdgM_General->WdgM_NumberOfWatchdogs; i++) {
+		// 	mode = wdgMInternalState.WdgM_ConfigPtr->WdgM_ConfigSet->WdgM_Mode[Mode].WdgM_Trigger[i].WdgM_WatchdogMode;
+		// 	deviceIndex = wdgMInternalState.WdgM_ConfigPtr->WdgM_ConfigSet->WdgM_Mode[Mode].WdgM_Trigger[i].WdgM_WatchdogRef->WdgM_DeviceRef->WdgIf_DeviceIndex;
+		// 	/** @req WDGM139 **/
+		// 	if (E_NOT_OK == WdgIf_SetMode(deviceIndex, mode)) {
+		// 		wdgMInternalState.WdgM_GlobalSupervisionStatus = WDGM_ALIVE_STOPPED;
+		// 		ret = E_NOT_OK;
+		// 	}
+		// }
 	}
 
 	if(ret != E_OK){
@@ -599,30 +605,30 @@ static boolean WdgM_IsAlive(void)
 /** @req WDGM065 **/
 static void wdgm_Trigger (void)
 {
-  uint8 i;
+//   uint8 i;
 
-  /* Update trigger counter. */
-  wdgMInternalState.WdgMTriggerCounter++;
+//   /* Update trigger counter. */
+//   wdgMInternalState.WdgMTriggerCounter++;
 
-  /** @req WDGM041 **/
-  /** @req WDGM051 **/
-  if ( WdgM_IsAlive() )
-  {
-	  /* Loop through all managed watchdogs. */
-	for (i = 0; i < wdgMInternalState.WdgM_ConfigPtr->WdgM_General->WdgM_NumberOfWatchdogs;i++)
-	{
-	    /** @req WDGM040 **/
-		/** @req WDGM103 **/
-		/** @req WDGM109 **/
-		/* Time to trig this particular watchdog instance? */
-	   if (0 == (wdgMInternalState.WdgMTriggerCounter %
-			     wdgMInternalState.WdgM_ConfigPtr->WdgM_ConfigSet->WdgM_Mode[wdgMInternalState.WdgMActiveMode].WdgM_Trigger[i].WdgM_TriggerReferenceCycle))
-	   {
-		 /** @req WDGM066 **/
-	     WdgIf_Trigger(wdgMInternalState.WdgM_ConfigPtr->WdgM_General->WdgM_Watchdog[i].WdgM_DeviceRef->WdgIf_DeviceIndex);
-	   }
-	}
-  }
+//   /** @req WDGM041 **/
+//   /** @req WDGM051 **/
+//   if ( WdgM_IsAlive() )
+//   {
+// 	  /* Loop through all managed watchdogs. */
+// 	for (i = 0; i < wdgMInternalState.WdgM_ConfigPtr->WdgM_General->WdgM_NumberOfWatchdogs;i++)
+// 	{
+// 	    /** @req WDGM040 **/
+// 		/** @req WDGM103 **/
+// 		/** @req WDGM109 **/
+// 		/* Time to trig this particular watchdog instance? */
+// 	   if (0 == (wdgMInternalState.WdgMTriggerCounter %
+// 			     wdgMInternalState.WdgM_ConfigPtr->WdgM_ConfigSet->WdgM_Mode[wdgMInternalState.WdgMActiveMode].WdgM_Trigger[i].WdgM_TriggerReferenceCycle))
+// 	   {
+// 		 /** @req WDGM066 **/
+// 	     WdgIf_Trigger(wdgMInternalState.WdgM_ConfigPtr->WdgM_General->WdgM_Watchdog[i].WdgM_DeviceRef->WdgIf_DeviceIndex);
+// 	   }
+// 	}
+//   }
 }
 
 /** @req WDGM160 **/
@@ -652,7 +658,7 @@ void WdgM_Cbk_GptNotification (void)
 	}
 }
 
-const WdgM_AliveSupervisionType * WdgM_Arc_GetAliveSupervisionPtr( enum WdgM_Mode mode, enum WdgM_SupervisedEntityId supId )
+const WdgM_AliveSupervisionType * WdgM_Arc_GetAliveSupervisionPtr( WdgM_ModeType mode, WdgM_SupervisedEntityIdType supId )
 {
 
   const WdgM_ModeConfigType * modeConfigPtr = &wdgMInternalState.WdgM_ConfigPtr->WdgM_ConfigSet->WdgM_Mode[mode];
@@ -660,7 +666,7 @@ const WdgM_AliveSupervisionType * WdgM_Arc_GetAliveSupervisionPtr( enum WdgM_Mod
   return modeConfigPtr->WdgM_AliveSupervisionPtr;
 }
 
-WdgM_AliveEntityStateType *WdgM_Arc_GetSupervisionPtr( enum WdgM_SupervisedEntityId supId ) {
+WdgM_AliveEntityStateType *WdgM_Arc_GetSupervisionPtr( WdgM_SupervisedEntityIdType supId ) {
 	 return GET_ENTITY_STATE_PTR(supId);
 }
 

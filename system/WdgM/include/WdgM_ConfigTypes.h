@@ -16,6 +16,7 @@
 #ifndef WDGM_CONFIGTYPES_H_
 #define WDGM_CONFIGTYPES_H_
 
+#include "WdgIf_Cfg.h"
 
 typedef enum
 {
@@ -73,7 +74,7 @@ typedef struct
 typedef struct
 {
 	const char_t           *WdgM_WatchdogName;
-	const WdgIf_DeviceType *WdgM_DeviceRef;
+	//const WdgIf_DeviceType *WdgM_DeviceRef;
 }WdgM_WatchdogType;
 
 /** @req WDGM002 **/
@@ -83,7 +84,7 @@ typedef struct
 	const uint16                     WdgM_NumberOfSupervisedEntities;
 	const uint16                     WdgM_NumberOfWatchdogs;
 	const WdgM_SupervisedEntityType  *WdgM_SupervisedEntityPtr;
-    const WdgM_WatchdogType          *WdgM_Watchdog;
+  const WdgM_WatchdogType          *WdgM_Watchdog;
 }WdgM_GeneralType;
 
 /** @req WDGM116 **/
