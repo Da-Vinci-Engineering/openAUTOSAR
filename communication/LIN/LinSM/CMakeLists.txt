@@ -12,8 +12,5 @@ target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/system/ComM/includ
 target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/debug/Det/include )
 target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/communication/ComServices/PDURouter/include )
 target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/drivers/Mcu/include )
-#target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/include )
 target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/kernel )
-#target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config )
 target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/boards/mpc5602b_xpc560b/examples/lin_simple/config )
-#target_include_directories(LinSM PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/CanDriver/include )
