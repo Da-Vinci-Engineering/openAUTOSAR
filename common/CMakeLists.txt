@@ -2,9 +2,11 @@
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
 
-#set(CMAKE_C_CLANG_TIDY "clang-tidy;-header-filter=.;-checks=*")
-
-add_library (common cirq_buffer.c printf.c xtoa.c ramlog.c tcf/streams.c)
+add_library (common STATIC src/cirq_buffer.c 
+                        src/printf.c    
+                        src/xtoa.c 
+                        src/ramlog.c 
+                        tcf/streams.c)
 
 target_include_directories(common PUBLIC ${PROJECT_SOURCE_DIR}/clib/)
 target_include_directories(common PUBLIC ${PROJECT_SOURCE_DIR}/system/kernel/)
