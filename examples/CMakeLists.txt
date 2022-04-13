@@ -3,4 +3,5 @@
 #*******************************************************************/
 
 add_subdirectory(os_simple)
-#add_subdirectory(os_rte)
+# Folder kept as an example to be built for future hardware
+#add_subdirectory(rte_simple)

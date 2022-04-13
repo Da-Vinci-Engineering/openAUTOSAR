@@ -8,4 +8,11 @@ WHAT IT DOES
    3. eTask2 activates bTask3 and waits for a new Event2
    4. Back to 1
   
+#********************************************************************
+# (C) DaVinci Engineering GmbH 2022
+# UPDATE: This example is currently used only to prove that the build
+#         system works.
+#         It is one of the objectives of the project to have it
+#         running on our supported hardware in the future
+#*******************************************************************/
   
