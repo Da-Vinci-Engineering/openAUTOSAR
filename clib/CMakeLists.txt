@@ -2,11 +2,12 @@
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
 
-#set(CMAKE_C_CLANG_TIDY "clang-tidy;-header-filter=.;-checks=*")
+add_library (clib  STATIC src/clib.c 
+                          src/strtok_r.c 
+                          src/clib_port.c
+                          )
 
-add_library (clib  ${PROJECT_SOURCE_DIR}/clib/clib.c ${PROJECT_SOURCE_DIR}/clib/strtok_r.c ${PROJECT_SOURCE_DIR}/clib/clib_port.c)
-
-target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/clib) 
+target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/clib/include) 
 target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/include) 
 target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/include/arm/) 
 target_include_directories(clib PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/kernel/) 

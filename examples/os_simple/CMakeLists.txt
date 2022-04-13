@@ -11,5 +11,4 @@ target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_c
 target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/include )
 target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/include )
 target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/include/arm )
-target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/include/arm/arm_cm3 )
 target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config )

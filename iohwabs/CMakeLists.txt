@@ -6,5 +6,8 @@ add_subdirectory(Fee)
 add_subdirectory(MemIf)
 add_subdirectory(Ea)
 add_subdirectory(WdgIf)
+#
+# Hardware-related modules
+#
 #add_subdirectory(Eep)
 #add_subdirectory(Wdg)

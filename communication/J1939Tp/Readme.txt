@@ -1,7 +1,6 @@
 #********************************************************************
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
-
-add_subdirectory(os_simple)
-# Folder kept as an example to be built for future hardware
-#add_subdirectory(rte_simple)
+This folder has been kept for future reference.
+The module implements requirements from Autosar 4.0.1 instead of
+3.1.5 as the rest of the system

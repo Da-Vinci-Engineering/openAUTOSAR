@@ -8,9 +8,3 @@ set (CMAKE_C_FLAGS "-mthumb -mcpu=cortex-m3 -mfix-cortex-m3-ldrd -ggdb -ffunctio
 
 target_include_directories(rte PUBLIC ${PROJECT_SOURCE_DIR}/include )
 target_include_directories(rte PUBLIC ${PROJECT_SOURCE_DIR}/rte/include )
-#target_include_directories(rte PUBLIC ${PROJECT_SOURCE_DIR}/iohwabs/MemIf/include )
-#target_include_directories(rte PUBLIC ${PROJECT_SOURCE_DIR}/system/Crc/include)
-#target_include_directories(rte PUBLIC ${PROJECT_SOURCE_DIR}/debug/Det/include)
-#target_include_directories(rte PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config )
-#target_include_directories(rte PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/include)
-#target_include_directories(rte PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/kernel)

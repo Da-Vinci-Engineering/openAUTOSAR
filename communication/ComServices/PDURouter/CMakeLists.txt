@@ -24,6 +24,4 @@ target_include_directories(PDURouter PUBLIC ${PROJECT_SOURCE_DIR}/diagnostic/Dcm
 target_include_directories(PDURouter PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/drivers/Mcu/include )
 target_include_directories(PDURouter PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/include )
 target_include_directories(PDURouter PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/kernel )
-#target_include_directories(PDURouter PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config )
 target_include_directories(PDURouter PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/com_simple/config )
-#target_include_directories(PDURouter PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/CanDriver/include )

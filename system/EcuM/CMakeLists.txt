@@ -15,6 +15,5 @@ target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/dr
 target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/include )
 target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/include )
 target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm3210c/examples/os_simple/config )
-target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/include/arm/arm_cm3/)
 target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/system/kernel/include)
 target_include_directories(EcuM PUBLIC ${PROJECT_SOURCE_DIR}/system/SchM/include)
