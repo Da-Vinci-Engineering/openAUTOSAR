@@ -8,7 +8,7 @@ add_library (common STATIC src/cirq_buffer.c
                         src/ramlog.c 
                         tcf/streams.c)
 
-target_include_directories(common PUBLIC ${PROJECT_SOURCE_DIR}/clib/)
+target_include_directories(common PUBLIC ${PROJECT_SOURCE_DIR}/clib/include)
 target_include_directories(common PUBLIC ${PROJECT_SOURCE_DIR}/system/kernel/)
 target_include_directories(common PUBLIC ${PROJECT_SOURCE_DIR}/system/kernel/include/)
 target_include_directories(common PUBLIC ${PROJECT_SOURCE_DIR}/common/tcf)
