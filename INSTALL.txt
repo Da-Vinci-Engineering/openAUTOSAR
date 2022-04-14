@@ -1,0 +1,28 @@
+How to compile DaVinci/openAUTOSAR
+
+The indiocations are for the only development environment currently supported:
+
+Ubuntu 20.04 LTS (we test the system on a VMWare virtual machine running on a MS Windows 10 host)
+
+INSTALLATION
+============
+
+1. Install gcc-arm-none-eabi
+Please note that since quite a while the only place where to download the toolcHain from is: 
+https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads
+
+The only version with which the package has been configured and tested is availablöe at 
+https://developer.arm.com/-/media/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-x86_64-arm-none-eabi.tar.xz
+
+  - Download the package in a folder of your choice and the deflate it.
+  - A folder called gcc-arm-11.2-2022.02-x86_64-arm-none-eabi should be visible
+  - IMPORTANT: the build system currently expects this folder to be under /opt, therefore the folder has to be (simply) copied there 
+               (e.g. using from a terminal a "sudo"ed" command like "sudo cp -R gcc-arm-11.2-2022.02-x86_64-arm-none-eabi /opt"),
+               if not already there.
+
+2. Download the package with the relevant release tag from the GitHub repository (if a zip file deflate it before progressing to next point)
+   
+3. You must have a folder with the content of the openAUTOSAR project
+     
+BUILD
+=====

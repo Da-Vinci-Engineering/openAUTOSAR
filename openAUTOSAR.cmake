@@ -2,7 +2,7 @@
 set(CMAKE_SYSTEM_NAME Generic)
 
 # which compilers to use for C and C++
-set(C_COMPILER_INSTALLATION /opt/gcc-arm-none-eabi-10.3-2021.10/)
+set(C_COMPILER_INSTALLATION /opt/gcc-arm-11.2-2022.02-x86_64-arm-none-eabi)
 set(CMAKE_C_COMPILER   ${C_COMPILER_INSTALLATION}/bin/arm-none-eabi-gcc)
 set(CMAKE_ASM_COMPILER ${C_COMPILER_INSTALLATION}/bin/arm-none-eabi-gcc)
 set(CMAKE_LINKER ${C_COMPILER_INSTALLATION}/bin/arm-none-eabi-ld)
