@@ -18,7 +18,7 @@ add_custom_target( os_simple.elf ALL
     -Map ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/scripts/os_simple.map   -T ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/scripts/linkscript_gcc.lcf
     -o ${PROJECT_SOURCE_DIR}/arch/arm/arm_cm3/scripts/os_simple.elf
     -L${C_COMPILER_INSTALLATION}/arm-none-eabi/lib/thumb/v7-m/nofp
-    -L${C_COMPILER_INSTALLATION}/lib/gcc/arm-none-eabi/10.3.1/thumb/v7-m/nofp
+    -L${C_COMPILER_INSTALLATION}/lib/gcc/arm-none-eabi/11.2.1/thumb/v7-m/nofp
     -L${PROJECT_SOURCE_DIR}/build/arch/arm/arm_cm3/drivers/Mcu
     -L${PROJECT_SOURCE_DIR}/build/arch/arm/arm_cm3/kernel
     -L${PROJECT_SOURCE_DIR}/build/boards/stm32_stm3210c/examples/os_simple

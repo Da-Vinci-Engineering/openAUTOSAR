@@ -1,0 +1,66 @@
+How to compile DaVinci/openAUTOSAR
+
+The indiocations are for the only development environment currently supported:
+
+Ubuntu 20.04 LTS (we test the system on a VMWare virtual machine running on a MS Windows 10 host)
+
+INSTALLATION
+============
+
+1. Install gcc-arm-none-eabi
+Please note that since quite a while the only place where to download the toolcHain from is: 
+https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads
+
+The only version with which the package has been configured and tested is availablöe at 
+https://developer.arm.com/-/media/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-x86_64-arm-none-eabi.tar.xz
+
+  - Download the package in a folder of your choice and the deflate it.
+  - A folder called gcc-arm-11.2-2022.02-x86_64-arm-none-eabi should be visible
+  - IMPORTANT: the build system currently expects this folder to be under /opt, therefore the folder has to be (simply) copied there 
+               (e.g. using from a terminal a "sudo"ed" command like "sudo cp -R gcc-arm-11.2-2022.02-x86_64-arm-none-eabi /opt"),
+               if not already there.
+
+2. Download the package with the relevant release tag from the GitHub repository (if a zip file deflate it before progressing to next point)
+   
+3. You must have a folder with the content of the openAUTOSAR project
+     
+BUILD
+=====
+
+1. Software packages needed by openAUTOSAR 
+   - install CMake if not  yet available ("sudo apt install cmake" should be sufficient)
+   - install Git if not  yet available ("sudo apt install git" should be sufficient)
+   - install gawk if not  yet available ("sudo apt install gawk" should be sufficient) This is still needed for the legacy code
+2. Inside the openAUTOSAR create a "build" folder (this is the typical name of the folder where we are going to create the binaries for our package)
+3. move inside the created folder
+4. delete everything inside (of course, the first time the folder is going to be empty, but this should be done always for a clean build)
+5. run 'cmake' to create the makefiles for the system
+   the command is 
+   
+   cmake -G "Unix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=true -DCMAKE_TOOLCHAIN_FILE=<installation folder of the project>/openAUTOSAR.cmake ..
+
+   -G "Unix Makefiles" : this tells CMake to generate makefiles in a Unix environment because we are using a linux host
+   -DCMAKE_VERBOSE_MAKEFILE=true : this is optional, but convenient when setting up a development environent.
+                                   Should anything go wrong with the compilation we can see the information from the compiler.
+                                   Otherwise they are hidden bx CMake
+   -DCMAKE_TOOLCHAIN_FILE=<installation folder of the project>/openAUTOSAR.cmake : this is the important one, because it tells CMake where
+                                   to find the configuration for the cross-compiling toolchain that we have installed before
+    .. this indicates the folder where the "root" of the project is. Since we are currently in the 'build' subfolder, this indicated the parent 
+       folder
+
+6. run 'make' . This should be sufficient to call the compilation of the system
+7. if everything is configured correctly at the end of the compilation some lines similar to the following ones should appear
+
+  >> Image size: (decimal)
+  text:       46576 B       45.5 kB
+  data:        2828 B        2.8 kB
+  bss:        26720 B       26.1 kB
+  ROM:        49404 B       48.2 kB
+  RAM:        29548 B       28.9 kB
+make[2]: Leaving directory '/home/xxxx/Projects/openAUTOSAR/build'
+[100%] Built target momory_footprint
+make[1]: Leaving directory '/home/xxxx/Projects/openAUTOSAR/build'
+/usr/bin/cmake -E cmake_progress_start /home/xxxx/Projects/openAUTOSAR/build/CMakeFiles 0
+
+Of course, figures can be (slightly) different
+ 
