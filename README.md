@@ -6,7 +6,7 @@ For details about setting the development environment and possibly other develop
 Da Vinci's contributions so far:
 
 - v0.1.0.alpha
-    - Created of a build system based on CMake, rather than old *nix/GNU Linux makefiles
+    - creation of a build system based on CMake, rather than old *nix/GNU Linux makefiles
     - better decoupling of the software modules between the different AUTOSAR blocks and from hardware packages (still a work in progress)
 
 - Currently Known Issues
