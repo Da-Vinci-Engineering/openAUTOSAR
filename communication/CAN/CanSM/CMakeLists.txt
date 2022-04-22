@@ -1,6 +1,7 @@
 #********************************************************************
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
+if(CMAKE_CROSSCOMPILING)
 add_library ( CanSM STATIC src/CanSM.c
                            src/CanSM_Cfg.c
             )
@@ -19,3 +20,20 @@ target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/boards/stm32_stm32
 target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/system/SchM/include )
 target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/system/ComM/include )
 
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    add_library ( CanSM STATIC src/CanSM.c
+                               src/CanSM_Cfg.c
+    )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanSM/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanTp/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/communication/ComServices/PDURouter/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/communication/CAN/CanIf/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/arch/x64/drivers/Mcu/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/arch/x64/kernel/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/config/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/system/SchM/include )
+    target_include_directories(CanSM PUBLIC ${PROJECT_SOURCE_DIR}/system/ComM/include )
+                
+endif()

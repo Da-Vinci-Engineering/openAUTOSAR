@@ -2,5 +2,5 @@
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
 
-add_subdirectory(LinIf)
 add_subdirectory(LinSM)
+add_subdirectory(LinIf)
