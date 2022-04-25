@@ -27,7 +27,6 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
     set (CMAKE_C_FLAGS "-g -O0 -c -std=gnu99 -Wall")
 
-    #add_subdirectory(arch/arm/arm_cm3)
     #add_subdirectory(arch/arm/arm_cm3/scripts)
     add_subdirectory(common)
     add_subdirectory(boards/linuxOs/config)
@@ -40,5 +39,6 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     add_subdirectory(system)
     add_subdirectory(examples)
     add_subdirectory(iohwabs)
+    #add_subdirectory(arch/x64/drivers)
 
 endif()
