@@ -1,3 +1,5 @@
+[![CMake](https://github.com/Da-Vinci-Engineering/openAUTOSAR/actions/workflows/cmake.yml/badge.svg?branch=master)](https://github.com/Da-Vinci-Engineering/openAUTOSAR/actions/workflows/cmake.yml)
+
 The DaVinci/openAUTOSAR project is a fork of openAUTOSAR/classic-platform v2.18.0 by Arctic Core (now part of Vector GmbH)
 Its main objective is to provide a learning platform for the development of AUTOSAR modules.
 
@@ -18,5 +20,5 @@ Da Vinci's contributions so far:
     - AUTOSAR modules not explicitly mentioned are not supported at the moment
     - AUTOSAR modules explicitly mentioned may just have stub implementations
     - A few source code files are still part of old Board Support Packages for boards that are not supported anymore. Some of these files are now only used as examples for the configuration of the AUTOSAR modules. Preprocessor directives in the build system indicate when this happens.
-    - The 
+
 
