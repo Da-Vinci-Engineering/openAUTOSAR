@@ -14,6 +14,5 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_include_directories(Dem PUBLIC ${PROJECT_SOURCE_DIR}/debug/Det/include )
     target_include_directories(Dem PUBLIC ${PROJECT_SOURCE_DIR}/memory/NvM/include )
     target_include_directories(Dem PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/config/include )
-    target_include_directories(Dem PUBLIC ${PROJECT_SOURCE_DIR}/arch/x64/kernel/include)
 
 endif()

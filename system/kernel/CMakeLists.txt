@@ -20,7 +20,6 @@ add_library (Kernel STATIC src/event.c
 
 target_include_directories(Kernel PUBLIC ${PROJECT_SOURCE_DIR}/arch/x64/kernel/include )
 target_include_directories(Kernel PUBLIC ${PROJECT_SOURCE_DIR}/include )
-#target_include_directories(Kernel PUBLIC ${PROJECT_SOURCE_DIR}/include/arm )
 target_include_directories(Kernel PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/MCAL/Os/include )
 target_include_directories(Kernel PUBLIC ${PROJECT_SOURCE_DIR}/system/kernel/include)
 

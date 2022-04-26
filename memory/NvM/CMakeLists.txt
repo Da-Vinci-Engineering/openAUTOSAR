@@ -15,8 +15,5 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_include_directories(NvM PUBLIC ${PROJECT_SOURCE_DIR}/iohwabs/MemIf/include )
     target_include_directories(NvM PUBLIC ${PROJECT_SOURCE_DIR}/system/Crc/include)
     target_include_directories(NvM PUBLIC ${PROJECT_SOURCE_DIR}/debug/Det/include)
-    target_include_directories(NvM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/config/include )
-    target_include_directories(NvM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/include)
-    target_include_directories(NvM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/kernel/include)
 
 endif()

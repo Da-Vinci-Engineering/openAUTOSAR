@@ -10,9 +10,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
     target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/system/SchM/include)
     target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/include )
-    target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/arch/x64/kernel/include )
     target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/MCAL/Mcu/include )
-    target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/include )
     target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/MCAL/Os/include )
     target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/system/EcuM/include)
 

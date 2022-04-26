@@ -6,5 +6,3 @@
                 )
     target_include_directories(Mcu PUBLIC ${PROJECT_SOURCE_DIR}/include )
     target_include_directories(Mcu PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/MCAL/Mcu/include )
-    target_include_directories(Mcu PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/config/include )
-    target_include_directories(Mcu PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/include )
