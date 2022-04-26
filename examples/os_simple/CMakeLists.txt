@@ -14,9 +14,12 @@ if(CMAKE_CROSSCOMPILING)
     target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/include )
     
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    set (CMAKE_C_FLAGS "-g -O0 -c -std=gnu99 -Wall")
-    add_library (os_simple STATIC system_hooks.c 
-                                  os_simple.c)
+    #set (CMAKE_C_FLAGS "-g -O0 -c -std=gnu99 -Wall")
+    #add_library (os_simple STATIC system_hooks.c 
+    #                          os_simple.c)
+    set (CMAKE_C_FLAGS "-g -O0 -std=gnu99 -Wall")
+    add_executable (os_simple os_simple.c
+                    )
     target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/config/include )
     target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/include )
     target_include_directories(os_simple PUBLIC ${PROJECT_SOURCE_DIR}/arch/x64/drivers/Mcu/include )

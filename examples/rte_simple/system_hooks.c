@@ -29,7 +29,7 @@
 /* ----------------------------[private define]------------------------------*/
 #define ERROR_LOG_SIZE 1
 
-//#define USE_LDEBUG_PRINTF	1
+#define USE_LDEBUG_PRINTF	1
 #include "debug.h"
 
 /* ----------------------------[private macro]-------------------------------*/

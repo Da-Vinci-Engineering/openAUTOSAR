@@ -16,6 +16,14 @@
 #ifndef RTE_DEM_H_
 #define RTE_DEM_H_
 
+/**************************************************
+ * Introduced according to AUTOSAR.SWS.RTE v3.1.5
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
 typedef uint8 Dem_DTCKindType;
 typedef uint32 Dem_DTCType;
 typedef uint16 Dem_EventIdType;
@@ -25,5 +33,13 @@ typedef uint8 Dem_IndicatorStatusType;
 typedef uint8 Dem_InitMonitorKindType;
 typedef uint8 Dem_OperationCycleIdType;
 typedef uint8 Dem_OperationCycleStateType;
+
+/**************************************************
+ * Introduced according to AUTOSAR.SWS.RTE v3.1.5
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#ifdef __cplusplus
+} /* extern "C" */
+#endif /* __cplusplus */
 
 #endif /* RTE_DEM_H_ */

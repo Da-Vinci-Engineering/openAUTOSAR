@@ -26,6 +26,14 @@ void OsIdle( void ) {
 	for(;;);
 }
 
+/**************************************************
+ * Introduced as part of mocking hardware
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#define CANIF_Channel_1 0
+#define CANIF_Channel_1_CONFIG_0 0
+#define DIO_CHANNEL_NAME_LED_CHANNEL 0
+
 void StartupTask( void ) {
 
 	// Call second phase of startup sequence.
