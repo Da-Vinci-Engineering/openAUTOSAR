@@ -16,6 +16,12 @@
 #ifndef RTE_MAIN_H_
 #define RTE_MAIN_H_
 
+/**************************************************
+ * Introduced according to AUTOSAR.SWS.RTE v3.1.5
+ * (C) DaVinci Engineering GmbH 2022
+ *************************************************/ 
+#include "Rte.h"
+
 Std_ReturnType Rte_Start( void );
 Std_ReturnType Rte_Stop( void );
 
