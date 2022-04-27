@@ -3,3 +3,4 @@
 #*******************************************************************/
 #add_subdirectory(examples)
 add_subdirectory(MCAL)
+add_subdirectory(design)
