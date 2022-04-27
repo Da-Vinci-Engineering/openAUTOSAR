@@ -7,15 +7,61 @@
 
 #include <libxml/xmlreader.h>
 
-/**
- * processNode:
- * @reader: the xmlReader
- *
- * Dump information about the current node
- */
+configFileData cfgFile;
+
 void
-processNode(xmlTextReaderPtr reader) 
+processConfigFileName(xmlTextReaderPtr reader) 
 {
+    const xmlChar *name, *value;
+    int ret;
+
+    name = xmlTextReaderConstName(reader);
+    if (strcmp(name,"boarddescriptionfile") == 0)
+    {
+        ret = xmlTextReaderRead(reader);
+        if (ret == 1)
+        {
+            value = xmlTextReaderConstValue(reader);
+            cfgFile.name = (char *)malloc(strlen(value)+1);
+            strcpy(cfgFile.name, value);
+            printf("%s - %s\n", name, cfgFile.name);
+        }
+    }
+}
+
+int
+streamConfigFile(const char *filename) 
+{
+    xmlTextReaderPtr reader;
+    int readSuccess = 0;
+    int parseSuccess = -1;
+
+    reader = xmlReaderForFile(filename, NULL, 0);
+    if (reader != NULL) 
+    {
+        readSuccess = xmlTextReaderRead(reader);
+        if (readSuccess == 1) 
+        {
+            processConfigFileName(reader);
+            xmlFreeTextReader(reader);
+            parseSuccess = 0;
+        }
+        else 
+        {
+            parseSuccess = -1;
+        }
+        xmlCleanupParser();
+        xmlMemoryDump();
+    } 
+    else 
+    {
+        parseSuccess = -1;
+    }
+    return(parseSuccess);
+}
+
+void
+processNode(xmlTextReaderPtr reader) {
     const xmlChar *name, *value;
 
     name = xmlTextReaderConstName(reader);
@@ -32,8 +78,7 @@ processNode(xmlTextReaderPtr reader)
 	    xmlTextReaderHasValue(reader));
     if (value == NULL)
 	printf("\n");
-    else 
-    {
+    else {
         if (xmlStrlen(value) > 40)
             printf(" %.40s...\n", value);
         else
@@ -41,29 +86,31 @@ processNode(xmlTextReaderPtr reader)
     }
 }
 
-/**
- * streamFile:
- * @filename: the file name to parse
- *
- * Parse and print information about an XML file.
- */
 void
-streamFile(const char *filename) {
+streamFile(const char *filename) 
+{
     xmlTextReaderPtr reader;
     int ret;
 
     reader = xmlReaderForFile(filename, NULL, 0);
-    if (reader != NULL) {
+    if (reader != NULL) 
+    {
         ret = xmlTextReaderRead(reader);
-        while (ret == 1) {
+        while (ret == 1) 
+        {
             processNode(reader);
             ret = xmlTextReaderRead(reader);
         }
         xmlFreeTextReader(reader);
-        if (ret != 0) {
+        if (ret != 0) 
+        {
             fprintf(stderr, "%s : failed to parse\n", filename);
         }
-    } else {
+        xmlCleanupParser();
+    } 
+    else 
+    {
         fprintf(stderr, "Unable to open %s\n", filename);
     }
 }
+

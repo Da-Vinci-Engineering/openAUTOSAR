@@ -6,4 +6,9 @@
 
 #include <libxml/xmlreader.h>
 
+typedef struct _configFileData
+{
+    const char * name;
+} configFileData;
+
 #endif // CREATEBOARD_H_
