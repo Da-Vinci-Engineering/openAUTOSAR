@@ -8,7 +8,7 @@
 
 typedef struct _configFileData
 {
-    const char * name;
+    const unsigned char * name;
 } configFileData;
 
 #endif // CREATEBOARD_H_

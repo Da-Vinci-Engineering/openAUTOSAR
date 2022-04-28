@@ -2,7 +2,8 @@
 * (C) DaVinci Engineering GmbH 2022
 ********************************************************************/
 
-#include "stdio.h"
+#include <stdio.h>
+#include <string.h>
 #include "createBoard.h"
 
 #include <libxml/xmlreader.h>
@@ -22,8 +23,8 @@ processConfigFileName(xmlTextReaderPtr reader)
         if (ret == 1)
         {
             value = xmlTextReaderConstValue(reader);
-            cfgFile.name = (char *)malloc(strlen(value)+1);
-            strcpy(cfgFile.name, value);
+            cfgFile.name = (char *)malloc(strlen((char *)value)+1);
+            strcpy(cfgFile.name, (char*) value);
             printf("%s - %s\n", name, cfgFile.name);
         }
     }

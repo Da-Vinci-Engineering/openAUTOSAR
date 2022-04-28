@@ -13,8 +13,8 @@ int main(int argc, char **argv)
         return(1);
     }
 
-    streamFile("/home/marco/Projects/classic-platform/boards/linuxOs/design/test/linuxBoard.xml");
-    streamFile(cfgFile.name);
+    streamConfigFile(argv[1]);
+    streamFile((char *) cfgFile.name);
 
     return(0);
 }
