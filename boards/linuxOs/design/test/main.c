@@ -6,54 +6,73 @@
 
 #include "createBoard.h"
 
-extern void processDoc(xmlTextReaderPtr readerPtr);
-extern configFileData cfg;
-
-int main(int argc, char **argv)
+/**
+ * Simple example to parse a file called "file.xml", 
+ * walk down the DOM, and print the name of the 
+ * xml elements nodes.
+ */
+int
+main(int argc, char **argv)
 {
-    xmlTextReaderPtr readerPtr;
-    int ret = -1;
+    xmlDoc *doc = NULL;
+    xmlNode *root_element = NULL;
 
-    if (argc < 1)
-    {
-        return (1);
+    xmlDoc *doc2 = NULL;
+    xmlNode *root_element2 = NULL;
+
+    if (argc != 3)
+        return(1);
+
+    /*
+     * this initialize the library and check potential ABI mismatches
+     * between the version it was compiled for and the actual shared
+     * library used.
+     */
+    LIBXML_TEST_VERSION
+
+    /*parse the file and get the DOM */
+    doc = xmlReadFile(argv[1], NULL, 0);
+
+    if (doc == NULL) {
+        printf("error: could not parse file %s\n", argv[1]);
     }
 
-    readerPtr = openConfigFile(argv[1]);
-    if (NULL == readerPtr)
-    {
-        fprintf(stderr, "%s: failed to create reader\n", argv[1]);
-        return (1);
+    /*Get the root element node */
+    root_element = xmlDocGetRootElement(doc);
+
+    print_element_names(root_element);
+
+    /*free the document */
+    xmlFreeDoc(doc);
+
+    /*
+     *Free the global variables that may
+     *have been allocated by the parser.
+     */
+    //xmlCleanupParser();
+
+    /*parse the file and get the DOM */
+    doc2 = xmlReadFile(argv[2], NULL, 0);
+
+    if (doc2 == NULL) {
+        printf("error: could not parse file %s\n", argv[2]);
     }
+        printf("Parsed file %s\n", argv[2]);
 
-    ret = processConfigDoc(readerPtr);
-    if (ret == 0)
-    {
-        fprintf(stderr, "New File:%s\n", cfg.name);
-        xmlReaderNewFile(readerPtr, cfg.name, NULL, 0);
-        if (NULL == readerPtr)
-        {
-            fprintf(stderr, "Failed to create reader: %s\n", cfg.name);
-            return (1);
-        }
-        processConfigDoc(readerPtr);
+    /*Get the root element node */
+    root_element2 = xmlDocGetRootElement(doc2);
 
-        /*
-         * Clean up the reader.
-         */
-        xmlFreeTextReader(readerPtr);
+    print_element_names(root_element2);
 
-        /*
-         * Cleanup function for the XML library.
-         */
-        xmlCleanupParser();
+    /*free the document */
+    xmlFreeDoc(doc2);
 
-        free(cfg.name);
+    /*
+     *Free the global variables that may
+     *have been allocated by the parser.
+     */
+    xmlCleanupParser();
 
-        /*
-         * this is to debug memory for regression tests
-         */
-        xmlMemoryDump();
-    }
-    return (0);
+
+    return 0;
 }

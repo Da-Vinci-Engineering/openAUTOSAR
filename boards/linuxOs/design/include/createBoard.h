@@ -4,8 +4,8 @@
 #ifndef CREATEBOARD_H_
 #define CREATEBOARD_H_
 
-xmlTextReaderPtr openConfigFile(char * fileName);
-int processConfigDoc(xmlTextReaderPtr readerPtr);
+void
+print_element_names(xmlNode * a_node);
 
 typedef struct _configFileData
 {
