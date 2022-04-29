@@ -4,11 +4,12 @@
 #ifndef CREATEBOARD_H_
 #define CREATEBOARD_H_
 
-#include <libxml/xmlreader.h>
+xmlTextReaderPtr openConfigFile(char * fileName);
+int processConfigDoc(xmlTextReaderPtr readerPtr);
 
 typedef struct _configFileData
 {
-    const unsigned char * name;
+    char * name;
 } configFileData;
 
 #endif // CREATEBOARD_H_

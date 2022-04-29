@@ -3,115 +3,49 @@
 ********************************************************************/
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include "createBoard.h"
-
 #include <libxml/xmlreader.h>
 
-configFileData cfgFile;
+#include "createBoard.h"
 
-void
-processConfigFileName(xmlTextReaderPtr reader) 
+configFileData cfg;
+
+xmlTextReaderPtr openConfigFile(char * fileName)
 {
-    const xmlChar *name, *value;
-    int ret;
 
-    name = xmlTextReaderConstName(reader);
-    if (strcmp(name,"boarddescriptionfile") == 0)
+    xmlTextReaderPtr readerPtr;
+    readerPtr = xmlReaderForFile(fileName, NULL, 0);
+    if (NULL == readerPtr) 
     {
-        ret = xmlTextReaderRead(reader);
-        if (ret == 1)
-        {
-            value = xmlTextReaderConstValue(reader);
-            cfgFile.name = (char *)malloc(strlen((char *)value)+1);
-            strcpy(cfgFile.name, (char*) value);
-            printf("%s - %s\n", name, cfgFile.name);
-        }
+      fprintf(stderr, "%s: failed to create reader\n", fileName);      
     }
+    return(readerPtr);
 }
 
-int
-streamConfigFile(const char *filename) 
+int processConfigDoc(xmlTextReaderPtr readerPtr)
 {
-    xmlTextReaderPtr reader;
-    int readSuccess = 0;
-    int parseSuccess = -1;
+    int ret = -1;
+    int parsed = -1;
+    const xmlChar *name = NULL; 
+    const xmlChar *value = NULL;
+ 
 
-    reader = xmlReaderForFile(filename, NULL, 0);
-    if (reader != NULL) 
+    ret = xmlTextReaderRead(readerPtr);
+    if (ret == 1) 
     {
-        readSuccess = xmlTextReaderRead(reader);
-        if (readSuccess == 1) 
-        {
-            processConfigFileName(reader);
-            xmlFreeTextReader(reader);
-            parseSuccess = 0;
-        }
-        else 
-        {
-            parseSuccess = -1;
-        }
-        xmlCleanupParser();
-        xmlMemoryDump();
-    } 
-    else 
-    {
-        parseSuccess = -1;
+        name = xmlTextReaderConstName(readerPtr);
+        xmlTextReaderRead(readerPtr);
+        value = xmlTextReaderConstValue(readerPtr);
+        cfg.name = (char *)malloc(strlen((char *) value)+1);
+        strcpy(cfg.name, (char * ) value);
+        printf("%s-%s\n-%d\n", name, cfg.name, strlen((char *) value)+1);
+        parsed = 0;
     }
-    return(parseSuccess);
-}
-
-void
-processNode(xmlTextReaderPtr reader) {
-    const xmlChar *name, *value;
-
-    name = xmlTextReaderConstName(reader);
-    if (name == NULL)
-	name = BAD_CAST "--";
-
-    value = xmlTextReaderConstValue(reader);
-
-    printf("%d %d %s %d %d", 
-	    xmlTextReaderDepth(reader),
-	    xmlTextReaderNodeType(reader),
-	    name,
-	    xmlTextReaderIsEmptyElement(reader),
-	    xmlTextReaderHasValue(reader));
-    if (value == NULL)
-	printf("\n");
-    else {
-        if (xmlStrlen(value) > 40)
-            printf(" %.40s...\n", value);
-        else
-	    printf(" %s\n", value);
-    }
-}
-
-void
-streamFile(const char *filename) 
-{
-    xmlTextReaderPtr reader;
-    int ret;
-
-    reader = xmlReaderForFile(filename, NULL, 0);
-    if (reader != NULL) 
+    else
     {
-        ret = xmlTextReaderRead(reader);
-        while (ret == 1) 
-        {
-            processNode(reader);
-            ret = xmlTextReaderRead(reader);
-        }
-        xmlFreeTextReader(reader);
-        if (ret != 0) 
-        {
-            fprintf(stderr, "%s : failed to parse\n", filename);
-        }
-        xmlCleanupParser();
-    } 
-    else 
-    {
-        fprintf(stderr, "Unable to open %s\n", filename);
+        parsed = -1;
     }
+    return(parsed);
 }
 
