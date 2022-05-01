@@ -14,65 +14,18 @@
 int
 main(int argc, char **argv)
 {
-    xmlDoc *doc = NULL;
-    xmlNode *root_element = NULL;
+    configFileData cfg;
+    boardDefinition bcfg;
 
-    xmlDoc *doc2 = NULL;
-    xmlNode *root_element2 = NULL;
-
-    if (argc != 3)
+    if (argc != 2)
         return(1);
 
-    /*
-     * this initialize the library and check potential ABI mismatches
-     * between the version it was compiled for and the actual shared
-     * library used.
-     */
-    LIBXML_TEST_VERSION
+    int ret = getBoardDescriptionFileName(argv[1], &cfg);
 
-    /*parse the file and get the DOM */
-    doc = xmlReadFile(argv[1], NULL, 0);
-
-    if (doc == NULL) {
-        printf("error: could not parse file %s\n", argv[1]);
+    if (ret == 0)
+    {
+        ret = getBoardDefinition(cfg.name, &bcfg);
     }
-
-    /*Get the root element node */
-    root_element = xmlDocGetRootElement(doc);
-
-    print_element_names(root_element);
-
-    /*free the document */
-    xmlFreeDoc(doc);
-
-    /*
-     *Free the global variables that may
-     *have been allocated by the parser.
-     */
-    //xmlCleanupParser();
-
-    /*parse the file and get the DOM */
-    doc2 = xmlReadFile(argv[2], NULL, 0);
-
-    if (doc2 == NULL) {
-        printf("error: could not parse file %s\n", argv[2]);
-    }
-        printf("Parsed file %s\n", argv[2]);
-
-    /*Get the root element node */
-    root_element2 = xmlDocGetRootElement(doc2);
-
-    print_element_names(root_element2);
-
-    /*free the document */
-    xmlFreeDoc(doc2);
-
-    /*
-     *Free the global variables that may
-     *have been allocated by the parser.
-     */
-    xmlCleanupParser();
-
 
     return 0;
 }

@@ -1,42 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<board>
-    <name>
-    LinuxOS
-    </name>
-    <size>
-        <hsize>
-            100
-        </hsize>
-        <vsize>
-            80
-        </vsize>
-    </size>
-    <content>
-        <button>
-            <size>
-                <hsize>
-                    40
-                </hsize>
-                <vsize>
-                    30
-            </vsize>
-            </size>
-        </button>
-        <led>
-            <size>
-                <hsize>
-                    40
-                </hsize>
-                <vsize>
-                    30
-            </vsize>
-            </size>
-            <coloron>
-              red
-            </coloron>
-            <coloroff>
-              green
-            </coloroff>
-        </led>
-    </content>
+<board  name="LinuxOs" hsize="100" vsize="80">
+    <components>
+        <button name="Button_1" hsize="40" vsize="30" text="Push"/>
+        <led name="Led_1" hsize="30" vsize="20" start_status="green"/>
+    </components>
 </board>
