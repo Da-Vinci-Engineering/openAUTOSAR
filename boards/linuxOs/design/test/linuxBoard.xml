@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<board  name="LinuxOs" hsize="100" vsize="30">
+    <components>
+        <button name="Button_1" hsize="15" vsize="4" label="Push" start_status="off"/>
+        <led name="Led_1" hsize="15" vsize="4" start_status="off"/>
+    </components>
+</board>

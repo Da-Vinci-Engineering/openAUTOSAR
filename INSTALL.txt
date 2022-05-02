@@ -22,6 +22,11 @@ BUILD
    - install g++ if not yet avaulable ("sudo apt install g++" should be sufficient)
    - install CMake if not  yet available ("sudo apt install cmake" should be sufficient)
    - install Git if not  yet available ("sudo apt install git" should be sufficient)
+   The following packages are needed for the handling of xml files (linuxOs board definition)
+   - install libxml2-dev if not yet available ("sudo apt install libxml2-dev" should be sufficient")
+   - install zlib1g-dev if not yet available ("sudo apt install zlib1g-dev" should be sufficient")
+   - install liblzma-dev if not yet available ("sudo apt install liblzma-dev" should be sufficient")
+   - install libicu-dev if not yet available ("sudo apt install libicu-dev" should be sufficient")
 2. Inside the openAUTOSAR create a "build" folder (this is the typical name of the folder where we are going to create the binaries for our package)
 3. move inside the created folder
 4. delete everything inside (of course, the first time the folder is going to be empty, but this should be done always for a clean build)
