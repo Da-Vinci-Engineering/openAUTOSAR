@@ -4,6 +4,18 @@
 #ifndef CREATEBOARD_H_
 #define CREATEBOARD_H_
 
+enum buttonStatus
+{
+    BTN_OFF,
+    BTN_ON
+};
+
+enum ledStatus
+{
+    LED_OFF,
+    LED_ON
+};
+
 /**
  * @brief Structure containing the file name for the definition of the board
  */
@@ -13,7 +25,7 @@ typedef struct _configFileData
 } configFileData;
 
 /**
- * @brief Structure containing the name of the board
+ * @brief Structure containing board data
  */
 typedef struct _board
 {
@@ -23,11 +35,37 @@ typedef struct _board
 } board;
 
 /**
+ * @brief Structure containing button data
+ */
+typedef struct _button
+{
+    char * name;
+    int hsize;
+    int vsize;
+    char * label;
+    enum buttonStatus btnStatus;
+} button;
+
+/**
+ * @brief Structure containing button data
+ */
+typedef struct _led
+{
+    char * name;
+    int hsize;
+    int vsize;
+    enum ledStatus ledStatus;
+} led;
+
+
+/**
  * @brief Structure containing the whole definition of the board
  */
 typedef struct _boardDefinition
 {
-    board * container;
+    board container;
+    button btn;
+    led ld;
 } boardDefinition;
 
 /**
@@ -40,7 +78,7 @@ int getBoardDescriptionFileName(char * fileName, configFileData * cfg);
 
 /**
  * @brief Reads the the file name from the XML config file
- * @param node contatining the name
+ * @param node containing the name
  * @param cfg pointer to the structure filled with data
  */
 void getFileNameFromDescriptionFile(xmlNode *a_node, configFileData *cfg);
@@ -54,9 +92,45 @@ int getBoardDefinition(char * descriptionFileName, boardDefinition * bcfg);
 
 /**
  * @brief Reads the the components from the definition file
- * @param node contatining the board name
+ * @param node containing the board name
  * @param bcfg pointer to the structure to be filled with data
  */
 void getBoardComponents(xmlNode *a_node, boardDefinition *bcfg);
+
+/**
+ * @brief Reads the the board main data from the definition file
+ * @param root_node pointer to node with the board name
+ * @param board_node pointer to current node for the board
+ * @param bcfg pointer to the structure to be filled with data
+ */
+void getBoardContainerData(xmlNode *root_node, xmlNode *board_node, boardDefinition *bcfg);
+
+/**
+ * @brief Reads the the board main data from the definition file
+ * @param root_node pointer to node with the board name
+ * @param board_node pointer to current node for the board
+ * @param bcfg pointer to the structure to be filled with data
+ */
+void getButtonData(xmlNode *root_node, xmlNode *board_node, boardDefinition *bcfg);
+
+/**
+ * @brief Reads the the board main data from the definition file
+ * @param root_node pointer to node with the board name
+ * @param board_node pointer to current node for the board
+ * @param bcfg pointer to the structure to be filled with data
+ */
+void getLedData(xmlNode *root_node, xmlNode *board_node, boardDefinition *bcfg);
+
+/**
+ * @brief creates a grphical rendering of the board
+ * @param bcfg pointer to the structure to be rendered
+ */
+void renderBoard(boardDefinition *bcfg);
+
+WINDOW *create_newwin(int height, int width, int starty, int startx);
+WINDOW *create_newsubwin(WINDOW *parent, int height, int width, int starty, int startx);
+void destroy_win(WINDOW *local_win);
+
+
 
 #endif // CREATEBOARD_H_
