@@ -26,6 +26,7 @@
 
 //#include "Eep.h"
 #include "Ea_Cfg.h"
+#include "Std_Types.h"
 #include "Modules.h"
 
 #define EA_MODULE_ID            MODULE_ID_EA

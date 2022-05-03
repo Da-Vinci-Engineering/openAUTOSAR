@@ -14,23 +14,17 @@
  * -------------------------------- Arctic Core ------------------------------*/
 
 
+#include <string.h>
+#include "MemMap.h"
 #include "Port.h" /** @req PORT131 */
-#include "stm32f10x.h"
-#if defined(USE_DET)
 #include "Det.h"
-#endif
-#include "string.h"
-#include "stm32f10x_gpio.h"
+//#include "SchM_Port.h"
 
 const uint32 *GpioBaseAddr[] =
 {
 	(uint32 *)GPIOA_BASE,
     (uint32 *)GPIOB_BASE,
     (uint32 *)GPIOC_BASE,
-    (uint32 *)GPIOD_BASE,
-    (uint32 *)GPIOE_BASE,
-    (uint32 *)GPIOF_BASE,
-    (uint32 *)GPIOG_BASE
 };
 
 const uint32 *GpioODRAddr[] =
@@ -38,10 +32,6 @@ const uint32 *GpioODRAddr[] =
     (uint32 *)&((GPIO_TypeDef *)GPIOA_BASE)->ODR,
     (uint32 *)&((GPIO_TypeDef *)GPIOB_BASE)->ODR,
     (uint32 *)&((GPIO_TypeDef *)GPIOC_BASE)->ODR,
-    (uint32 *)&((GPIO_TypeDef *)GPIOD_BASE)->ODR,
-    (uint32 *)&((GPIO_TypeDef *)GPIOE_BASE)->ODR,
-    (uint32 *)&((GPIO_TypeDef *)GPIOF_BASE)->ODR,
-    (uint32 *)&((GPIO_TypeDef *)GPIOG_BASE)->ODR
 };
 
 typedef enum
@@ -72,7 +62,7 @@ static Port_ConfigType * _configPtr = NULL;
 #define VALIDATE_PARAM_PIN(_api)
 #endif
 
-#if (PORT_VERSION_INFO_API == STD_ON)
+#ifdef PORT_VERSION_INFO_API
 static Std_VersionInfoType _Port_VersionInfo =
 { .vendorID = (uint16)1, .moduleID = (uint16) MODULE_ID_PORT,
         .instanceID = (uint8)1,

@@ -13,13 +13,6 @@
  * for more details.
  * -------------------------------- Arctic Core ------------------------------*/
 
-/** @addtogroup Port Port Driver
- *  @{ */
-
-/** @file Port.h
- * API and type definitions for Port Driver.
- */
-
 #ifndef PORT_H_
 #define PORT_H_
 
@@ -31,12 +24,13 @@
 #define PORT_AR_MINOR_VERSION 1
 #define PORT_AR_PATCH_VERSION 0
 
-#include "Modules.h"
+#include "Std_Types.h"
+
 #include "Port_Cfg.h" /** @req PORT130 */
 
 #if (PORT_VERSION_INFO_API == STD_ON)
 void Port_GetVersionInfo(Std_VersionInfoType *versionInfo);
-#endif 
+#endif
 
 /** @name Error Codes */
 /** @req PORT051 */
@@ -65,27 +59,18 @@ void Port_GetVersionInfo(Std_VersionInfoType *versionInfo);
  */
 typedef enum
 {
-    PORT_PIN_IN = 0, PORT_PIN_OUT,
+    PORT_PIN_IN = 0, 
+    PORT_PIN_OUT
 } Port_PinDirectionType;
 
-#if defined(CFG_HC1X)
-/** @req PORT124 */
-typedef uint8 Port_PinModeType;
-#else  // CFG_PPC, CFG_STM32_STAMP and others
 typedef uint32 Port_PinModeType;
-#endif
 
 void Port_Init(const Port_ConfigType *configType);
 
-#if ( PORT_SET_PIN_DIRECTION_API == STD_ON )
 void Port_SetPinDirection(Port_PinType pin, Port_PinDirectionType direction);
-#endif
 
 void Port_RefreshPortDirection(void);
 
-#if (PORT_SET_PIN_MODE_API == STD_ON)
 void Port_SetPinMode(Port_PinType Pin, Port_PinModeType Mode);
-#endif
 
-#endif /*PORT_H_*/
-/** @} */
+#endif
