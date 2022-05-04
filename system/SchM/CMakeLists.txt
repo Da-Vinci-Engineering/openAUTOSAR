@@ -13,5 +13,6 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/MCAL/Mcu/include )
     target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/MCAL/Os/include )
     target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/system/EcuM/include)
+    target_include_directories(SchM PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/system/EcuM/include)
 
 endif()

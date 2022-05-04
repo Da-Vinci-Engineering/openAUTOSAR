@@ -7,7 +7,7 @@ if(CMAKE_CROSSCOMPILING)
 
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     add_subdirectory(Crc)
-    add_subdirectory(EcuM)
+#    add_subdirectory(EcuM)
     add_subdirectory(Nm)
     add_subdirectory(kernel)
     add_subdirectory(ComM)

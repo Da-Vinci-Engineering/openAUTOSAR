@@ -1,5 +1,7 @@
 #********************************************************************
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
-add_subdirectory(Adc)
-#add_subdirectory(Port)
+add_subdirectory(Ea)
+add_subdirectory(Fee)
+add_subdirectory(MemIf)
+add_subdirectory(WdgIf)

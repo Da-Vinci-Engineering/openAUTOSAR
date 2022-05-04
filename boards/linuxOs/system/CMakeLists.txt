@@ -1,5 +1,4 @@
 #********************************************************************
 # (C) DaVinci Engineering GmbH 2022
 #*******************************************************************/
-add_subdirectory(Adc)
-#add_subdirectory(Port)
+add_subdirectory(EcuM)

@@ -4,3 +4,5 @@
 #add_subdirectory(examples)
 add_subdirectory(MCAL)
 add_subdirectory(design)
+add_subdirectory(system)
+add_subdirectory(iohwabs)
