@@ -19,6 +19,8 @@
 #error IoHwAb: Configuration file expected BSW module version to be 1.0.*
 #endif
 
+#include "Rte_Type.h"
+
 /**************************************** Digital outputs *****************************************/
 
 #define IOHWAB_SIGNAL_DIGITALSIGNAL_LED4	0

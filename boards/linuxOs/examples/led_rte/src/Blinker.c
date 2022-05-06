@@ -1,11 +1,8 @@
-/*
- * Blinker.c
- *
- *  Created on: 6 jul 2011
- *      Author: tojo
- */
+/********************************************************************
+ * (C) DaVinci Engineering GmbH 2022
+ ********************************************************************/
 
-#import "Rte_Blinker.h"
+#include "Rte_Blinker.h"
 
 
 DigitalLevel Value = FALSE;

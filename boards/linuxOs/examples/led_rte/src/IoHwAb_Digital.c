@@ -22,7 +22,7 @@
 #include "Det.h"
 #endif
 
-#error "DIO Module is needed by IOHWAB"
+//#error "DIO Module is needed by IOHWAB"
 #endif
 /************************************ External Device Drivers *************************************/
 
