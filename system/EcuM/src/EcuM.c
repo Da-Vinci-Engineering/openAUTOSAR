@@ -78,7 +78,9 @@
 #if defined(USE_DET)
 #include "Det.h"
 #endif
+#if 0
 #include "isr.h"
+#endif
 #if defined(USE_NVM)
 #include "NvM.h"
 #endif
@@ -116,6 +118,7 @@ void EcuM_Init(void) {
 	Std_ReturnType status;
 	set_current_state(ECUM_STATE_STARTUP_ONE);
 
+	#if 0
 	// Initialize drivers that are needed to determine PostBuild configuration
 	EcuM_AL_DriverInitZero();
 
@@ -124,7 +127,9 @@ void EcuM_Init(void) {
 
 	// Setup interrupts
 	Os_IsrInit();
+    #endif
 
+	#if 0
 	// Determine PostBuild configuration
 	EcuM_World.config = EcuM_DeterminePbConfiguration();
 
@@ -132,7 +137,9 @@ void EcuM_Init(void) {
 
 	// Initialize drivers needed before the OS-starts
 	EcuM_AL_DriverInitOne(EcuM_World.config);
+    #endif
 
+	#if 0
 	// Determine the reset/wakeup reason
 	switch (Mcu_GetResetReason()) {
 	case MCU_POWER_ON_RESET:
@@ -150,10 +157,12 @@ void EcuM_Init(void) {
 		assert(0);
 		break;
 	}
+    #endif
 
 	// Moved this here because EcuM_SelectShutdownTarget needs us to be initilized.
 	EcuM_World.initiated = TRUE;
 
+	#if 0
 	// Set default shutdown target
 
 	status = EcuM_SelectShutdownTarget(
@@ -176,14 +185,18 @@ void EcuM_Init(void) {
 	EcuM_World.run_requests = 0;
 	EcuM_World.postrun_requests = 0;
 
+    #endif
 	// Start this baby up
 	AppModeType appMode;
 	status = EcuM_GetApplicationMode(&appMode);
-	if (status != E_OK) {
+	if (status != E_OK) 
+	{
 		//TODO: Report error.
 	}
 
+	#if 0
 	StartOS(appMode); /** @req EcuM2141 */
+    #endif
 }
 
 
@@ -252,15 +265,19 @@ void EcuM_StartupTwo(void)
 
 
 // Typically called from OS shutdown hook
-void EcuM_Shutdown(void) {
+void EcuM_Shutdown(void) 
+{
 	set_current_state(ECUM_STATE_GO_OFF_TWO);
-
+#if 0
 	// Let the last drivers do a nice shutdown
 	EcuM_OnGoOffTwo();
 
-	if (EcuM_World.shutdown_target == ECUM_STATE_OFF) {
+	if (EcuM_World.shutdown_target == ECUM_STATE_OFF) 
+	{
 		EcuM_AL_SwitchOff();
-	} else {
+	} 
+	else 
+	{
 #if (MCU_PERFORM_RESET_API == STD_ON)
 		Mcu_PerformReset();
 #else
@@ -270,6 +287,7 @@ void EcuM_Shutdown(void) {
 		}
 #endif
 	}
+#endif
 }
 
 Std_ReturnType EcuM_GetState(EcuM_StateType* state) {

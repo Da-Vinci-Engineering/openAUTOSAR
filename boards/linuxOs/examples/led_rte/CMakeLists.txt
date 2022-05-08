@@ -18,4 +18,4 @@ target_include_directories(blinker PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/M
 target_include_directories(blinker PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/MCAL/Dio/include)
 target_include_directories(blinker PUBLIC ${PROJECT_SOURCE_DIR}/debug/Det/include)
 
-target_link_libraries(blinker PUBLIC Kernel)
+target_link_libraries(blinker PUBLIC Kernel Ecum)

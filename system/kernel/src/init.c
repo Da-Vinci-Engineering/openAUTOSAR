@@ -89,8 +89,9 @@ static _Bool init_os_called = 0;
  * Initialization of kernel structures and start of the first
  * task.
  */
-
-void InitOS( void ) {
+#if 0
+void InitOS( void ) 
+{
 	int i;
 	OsTaskVarType *tmpPcbPtr;
 	OsIsrStackType intStack;
@@ -152,7 +153,8 @@ void InitOS( void ) {
 
 	// Now all tasks should be created.
 }
-
+#endif
+#if 0
 static void os_start( void ) {
 	uint16_t i;
 	OsTaskVarType *tmpPcbPtr = NULL;
@@ -240,6 +242,7 @@ static void os_start( void ) {
 		assert(0);
 	}
 }
+#endif
 #if 0
 static void os_start( void ) {
 
@@ -289,6 +292,7 @@ extern void __init( void );
 
 int main( void )
 {
+#if 0
 	/* TODO: Move to arch specific part */
 #if defined(CFG_PPC) && defined(__CWCC__)
 	memcpy(__SDATA2_RAM, __SDATA2, __SDATA2_END - __SDATA2_RAM );
@@ -339,11 +343,12 @@ int main( void )
 	/* Runtime init */
 	__init();
 #endif
-
+#endif // #if 0
 	EcuM_Init();
 
 }
 
+#if 0
 /**
  * Starts the OS
  *
@@ -381,5 +386,5 @@ void ShutdownOS( StatusType Error ) {
 
 }
 
-
+#endif
 

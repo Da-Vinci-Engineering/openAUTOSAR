@@ -200,10 +200,14 @@ void set_current_state(EcuM_StateType state) {
 }
 #else
 	if (ECUM_STATE_APP_RUN == state) {
+		#if 0
 		Irq_Save(irqMask);
+		#endif
 		/* We have a configurable minimum time (EcuMRunMinimumDuration) we have to stay in RUN state  */
 		EcuM_World_run_state_timeout = EcuM_World.config->EcuMRunMinimumDuration / ECUM_MAIN_FUNCTION_PERIOD; /** @req EcuM2310 */
+		#if 0
 		Irq_Restore(irqMask);
+		#endif
 	}
 }
 #endif
