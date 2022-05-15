@@ -6,9 +6,9 @@ if(CMAKE_CROSSCOMPILING)
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 set(CMAKE_C_FLAGS "-g -O0 -std=gnu99 -Wall -DUSE_MCU")
 add_executable (blinky 
-            #src/event.c 
+            ../src/event.c 
             ../src/init.c 
-            #${PROJECT_SOURCE_DIR}/boards/linuxOs/examples/led_rte/config/Cpu.c
+            ${PROJECT_SOURCE_DIR}/boards/linuxOs/examples/led_rte/config/Cpu.c
             #src/task.c
             #src/resource.c
             #src/alarm.c
@@ -20,10 +20,10 @@ add_executable (blinky
             #src/asm_offset.c
             )
 
-target_link_libraries(blinky PUBLIC Kernel EcuM)
+target_link_libraries(blinky PUBLIC Kernel EcuM Mcu os_linux)
 #target_include_directories(blinky PUBLIC ${PROJECT_SOURCE_DIR}/arch/x64/kernel/include )
-#target_include_directories(blinky PUBLIC ${PROJECT_SOURCE_DIR}/include )
-#target_include_directories(blinky PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/MCAL/Os/include )
+target_include_directories(blinky PUBLIC ${PROJECT_SOURCE_DIR}/include )
+target_include_directories(blinky PUBLIC ${PROJECT_SOURCE_DIR}/boards/linuxOs/system/os_linux/include )
 #target_include_directories(blinky PUBLIC ${PROJECT_SOURCE_DIR}/system/kernel/include)
 
 endif()

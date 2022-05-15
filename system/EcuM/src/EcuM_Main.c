@@ -34,6 +34,7 @@
 //#define USE_LDEBUG_PRINTF
 #include "debug.h"
 
+#include "Cpu_ext.h"
 #define ECUM_STR   "ECUM:"
 
 #if defined(USE_LDEBUG_PRINTF)
