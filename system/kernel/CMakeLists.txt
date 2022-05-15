@@ -12,9 +12,9 @@ add_library (Kernel STATIC src/event.c
             src/alarm.c
             src/sched_table.c
             src/counter.c
-            #src/isr.c
+            src/isr.c
             src/os_arctest.c
-            #src/application.c
+            src/application.c
             src/asm_offset.c
             )
 

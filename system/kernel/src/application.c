@@ -17,6 +17,7 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <stddef.h>
 #include "Os.h"
 
 #include "internal.h"
