@@ -21,11 +21,12 @@
 #include "Std_Types.h"
 typedef uint32_t imask_t;
 
-#define Irq_Save(flags)		((flags) = 0)		// Dummy assignment to avoid compiler warnings
-#define Irq_Restore(flags)	(void)(flags)
+imask_t Irq_Save(imask_t flags);
 
-#define Irq_Disable()
-#define Irq_Enable()
+void Irq_Restore(imask_t flags);
+
+void Irq_Disable();
+void Irq_Enable();
 
 #define Irq_SuspendAll() 	Irq_Disable()
 #define Irq_ResumeAll() 	Irq_Enable()

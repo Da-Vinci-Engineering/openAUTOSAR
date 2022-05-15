@@ -22,7 +22,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     #add_subdirectory(arch/x64/drivers)
     #add_subdirectory(arch/arm/arm_cm3/scripts)
     #add_subdirectory(examples)
-    add_subdirectory(system)
     add_subdirectory(boards/linuxOs)
+    add_subdirectory(system)
 
 endif()
