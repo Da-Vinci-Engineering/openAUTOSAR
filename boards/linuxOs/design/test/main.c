@@ -32,6 +32,7 @@ main(int argc, char **argv)
 {
     configFileData cfg;
     boardDefinition bcfg;
+	int ch;
 
     if (argc != 2)
         return(1);
@@ -47,6 +48,12 @@ main(int argc, char **argv)
     }  
 
     renderBoard(&bcfg);
+
+	while((ch = getch()) != KEY_F(12))
+	{	
+	}
+		
+	endwin();			/* End curses mode		  */
 
     return 0;
 }

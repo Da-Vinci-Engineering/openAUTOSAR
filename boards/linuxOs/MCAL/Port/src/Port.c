@@ -18,13 +18,14 @@
 #include "MemMap.h"
 #include "Port.h" /** @req PORT131 */
 #include "Det.h"
+
 //#include "SchM_Port.h"
 
+#if 0
 const uint32 *GpioBaseAddr[] =
 {
 	(uint32 *)GPIOA_BASE,
     (uint32 *)GPIOB_BASE,
-    (uint32 *)GPIOC_BASE,
 };
 
 const uint32 *GpioODRAddr[] =
@@ -34,6 +35,8 @@ const uint32 *GpioODRAddr[] =
     (uint32 *)&((GPIO_TypeDef *)GPIOC_BASE)->ODR,
 };
 
+#endif 
+
 typedef enum
 {
     PORT_UNINITIALIZED = 0, PORT_INITIALIZED,
@@ -42,6 +45,7 @@ typedef enum
 static Port_StateType _portState = PORT_UNINITIALIZED;
 static Port_ConfigType * _configPtr = NULL;
 
+#if 0
 /** @req PORT107 */
 #if (PORT_DEV_ERROR_DETECT == STD_ON)
 #define VALIDATE_PARAM_CONFIG(_ptr,_api) \
@@ -85,6 +89,9 @@ static Std_VersionInfoType _Port_VersionInfo =
 /** @req PORT003 See environment i.e Ecu State Manager */
 /** @req PORT055 Comment: Output value is set before direction */
 /** @req PORT121 */
+
+#endif
+
 void Port_Init(const Port_ConfigType *configType)
 {
   VALIDATE_PARAM_CONFIG(configType, PORT_INIT_ID); /** @req PORT105 */
@@ -103,10 +110,12 @@ void Port_Init(const Port_ConfigType *configType)
 	  *((GpioPinOutLevel_Type *)gpioAddr) = configType->outConfig[i];
   }
 
+#if 0
 	// Enable remaps
 	for (int portIndex = 0; portIndex < configType->remapCount; portIndex++) {
 		GPIO_PinRemapConfig(configType->remaps[portIndex], ENABLE);
 	}
+#endif 
 
     _portState = PORT_INITIALIZED;
     _configPtr = (Port_ConfigType *)configType;
@@ -170,6 +179,7 @@ void Port_RefreshPortDirection(void)
     return;
 }
 
+#if 0
 /** req PORT143 */
 /** req PORT102 */
 /** req PORT103 */
@@ -197,4 +207,5 @@ void Port_SetPinMode(Port_PinType Pin, Port_PinModeType Mode)
 
     return;
 }
+#endif
 #endif

@@ -25,7 +25,7 @@
 #include "Mcu_ConfigTypes.h"
 
 #define MCU_DEV_ERROR_DETECT 	STD_OFF 
-#define MCU_PERFORM_RESET_API 	STD_ON
+#define MCU_PERFORM_RESET_API 	STD_OFF
 #define MCU_VERSION_INFO_API 	STD_ON
 
 

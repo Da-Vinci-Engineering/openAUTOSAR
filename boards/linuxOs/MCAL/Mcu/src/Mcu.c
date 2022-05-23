@@ -103,21 +103,6 @@ typedef struct {
 
 void Mcu_ConfigureFlash(void);
 
-
-
-/* Haven't found any ID accessable from memory.
- * There is the DBGMCU_IDCODE (0xe0042000) found in RM0041 but it
- * you can't read from that address..
- */
-#if 0
-cpu_info_t cpu_info_list[] = {
-    {
-    .name = "????",
-    .pvr = 0,
-    },
-};
-#endif
-
 /* The supported cores
  */
 core_info_t core_info_list[] = {
@@ -127,31 +112,9 @@ core_info_t core_info_list[] = {
     },
 };
 
-#if 0
-static cpu_info_t *Mcu_IdentifyCpu(uint32 pvr)
-{
-  int i;
-  for (i = 0; i < ARRAY_SIZE(cpu_info_list); i++) {
-    if (cpu_info_list[i].pvr == pvr) {
-      return &cpu_info_list[i];
-    }
-  }
-
-  return NULL;
-}
-#endif
-
-
 static core_info_t *Mcu_IdentifyCore(uint32 pvr)
 {
-  int i;
-  for (i = 0; i < ARRAY_SIZE(core_info_list); i++) {
-    if (core_info_list[i].pvr == pvr) {
-      return &core_info_list[i];
-    }
-  }
-
-  return NULL;
+  return (&core_info_list[0]);
 }
 
 /**
@@ -161,18 +124,10 @@ static core_info_t *Mcu_IdentifyCore(uint32 pvr)
  */
 static uint32 Mcu_CheckCpu( void ) {
 
-  uint32 pvr = SCB->CPUID;
-  //uint32 pir;
-  //cpu_info_t *cpuType;
+  uint32 pvr = CORE_CPUID_CORTEX_M3;
+
   core_info_t *coreType;
-
-  //cpuType = Mcu_IdentifyCpu(pvr);
   coreType = Mcu_IdentifyCore(pvr);
-
-  if( (coreType == NULL) ) {
-    // Just hang
-    while(1) ;
-  }
 
   return 0;
 }
@@ -182,18 +137,12 @@ static uint32_t GetPllValueFromMult(uint8_t pll)
 	return (((uint32_t)pll - 2) << 18);
 }
 
-#ifdef STM32F10X_CL
-static uint32_t GetPll2ValueFromMult(uint8_t pll)
-{
-	return (((uint32_t)pll - 2) << 8);
-}
-#endif
-
 /**
   * Set bus clocks. SysClk,AHBClk,APB1Clk,APB2Clk
   */
 static void SetClocks(Mcu_ClockSettingConfigType *clockSettingsPtr)
 {
+#if 0
   volatile uint32 StartUpCounter = 0, HSEStatus = 0;
 
   /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/
@@ -235,33 +184,6 @@ static void SetClocks(Mcu_ClockSettingConfigType *clockSettingsPtr)
     /* PCLK1 = HCLK */
     RCC->CFGR |= (uint32_t)RCC_CFGR_PPRE1_DIV2;
 
-#ifdef STM32F10X_CL
-    /* Configure PLLs ------------------------------------------------------*/
-    /* PLL2 configuration: PLL2CLK = (HSE / 5) * 8 = 40 MHz */
-    /* PREDIV1 configuration: PREDIV1CLK = PLL2 / 5 = 8 MHz */
-
-    RCC->CFGR2 &= (uint32_t)~(RCC_CFGR2_PREDIV2 | RCC_CFGR2_PLL2MUL |
-                              RCC_CFGR2_PREDIV1 | RCC_CFGR2_PREDIV1SRC);
-    RCC->CFGR2 |= (uint32_t)(RCC_CFGR2_PREDIV2_DIV5 | GetPll2ValueFromMult(clockSettingsPtr->Pll2) |
-                             RCC_CFGR2_PREDIV1SRC_PLL2 | RCC_CFGR2_PREDIV1_DIV5);
-
-    /* Enable PLL2 */
-    RCC->CR |= RCC_CR_PLL2ON;
-    /* Wait till PLL2 is ready */
-    while((RCC->CR & RCC_CR_PLL2RDY) == 0)
-    {
-    }
-
-    /* PLL configuration: PLLCLK = PREDIV1 * 9 = 72 MHz */
-    RCC->CFGR &= (uint32_t)~(RCC_CFGR_PLLXTPRE | RCC_CFGR_PLLSRC | RCC_CFGR_PLLMULL);
-    RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLXTPRE_PREDIV1 | RCC_CFGR_PLLSRC_PREDIV1 |
-    		                GetPllValueFromMult(clockSettingsPtr->Pll1));
-#else
-    /*  PLL configuration: PLLCLK = HSE * 9 = 72 MHz */
-    RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE |
-                                        RCC_CFGR_PLLMULL));
-    RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | GetPllValueFromMult(clockSettingsPtr->Pll1));
-#endif /* STM32F10X_CL */
 
     /* Enable PLL */
     RCC->CR |= RCC_CR_PLLON;
@@ -284,6 +206,7 @@ static void SetClocks(Mcu_ClockSettingConfigType *clockSettingsPtr)
   { /* HSE fails to start-up, the application will have wrong clock */
 	  NVIC_SystemReset();
   }
+#endif
 }
 
 /**
@@ -291,9 +214,11 @@ static void SetClocks(Mcu_ClockSettingConfigType *clockSettingsPtr)
   */
 static void InitPerClocks()
 {
+#if 0
 	RCC->AHBENR |= McuPerClockConfigData.AHBClocksEnable;
 	RCC->APB1ENR |= McuPerClockConfigData.APB1ClocksEnable;
 	RCC->APB2ENR |= McuPerClockConfigData.APB2ClocksEnable;
+#endif
 }
 
 /**
@@ -301,6 +226,7 @@ static void InitPerClocks()
   */
 static void InitMcuClocks(Mcu_ClockSettingConfigType *clockSettingsPtr)
 {
+#if 0
   /* Reset the RCC clock configuration to the default reset state(for debug purpose) */
   /* Set HSION bit */
   RCC->CR |= (uint32_t)0x00000001;
@@ -338,6 +264,7 @@ static void InitMcuClocks(Mcu_ClockSettingConfigType *clockSettingsPtr)
   /* Configure the System clock frequency, HCLK, PCLK2 and PCLK1 prescalers */
   /* Configure the Flash Latency cycles and enable prefetch buffer */
   SetClocks(clockSettingsPtr);
+#endif
 }
 
 //-------------------------------------------------------------------
@@ -346,9 +273,7 @@ void Mcu_Init(const Mcu_ConfigType *configPtr)
 {
   VALIDATE( ( NULL != configPtr ), MCU_INIT_SERVICE_ID, MCU_E_PARAM_CONFIG );
 
-#if !defined(USE_SIMULATOR)
   Mcu_CheckCpu();
-#endif
 
   memset(&Mcu_Global.stats,0,sizeof(Mcu_Global.stats));
 
@@ -400,10 +325,6 @@ Std_ReturnType Mcu_InitClock(const Mcu_ClockType ClockSetting)
 void Mcu_DistributePllClock(void)
 {
   VALIDATE( ( 1 == Mcu_Global.initRun ), MCU_DISTRIBUTEPLLCLOCK_SERVICE_ID, MCU_E_UNINIT );
-//  VALIDATE( ( FMPLL.SYNSR.B.LOCK == 1 ), MCU_DISTRIBUTEPLLCLOCK_SERVICE_ID, MCU_E_PLL_NOT_LOCKED );
-
-  /* NOT IMPLEMENTED due to pointless function on this hardware */
-
 }
 
 //-------------------------------------------------------------------
@@ -413,16 +334,7 @@ Mcu_PllStatusType Mcu_GetPllStatus(void) {
 	VALIDATE_W_RV( ( 1 == Mcu_Global.initRun ), MCU_GETPLLSTATUS_SERVICE_ID, MCU_E_UNINIT, MCU_PLL_STATUS_UNDEFINED );
 	Mcu_PllStatusType rv;
 
-#if !defined(USE_SIMULATOR)
-	if (RCC->CR & RCC_CR_PLLRDY) {
-		rv = MCU_PLL_LOCKED;
-	} else {
-		rv = MCU_PLL_UNLOCKED;
-	}
-#else
-	/* We are running on instruction set simulator. PLL is then always in sync... */
 	rv = MCU_PLL_LOCKED;
-#endif
 	return rv;
 }
 
@@ -438,18 +350,7 @@ Mcu_ResetType Mcu_GetResetReason(void) {
 
 	VALIDATE_W_RV( ( 1 == Mcu_Global.initRun ), MCU_GETRESETREASON_SERVICE_ID, MCU_E_UNINIT, MCU_RESET_UNDEFINED );
 
-	csr = RCC->CSR;
-
-	if (csr & RCC_CSR_SFTRSTF) {
-		rv = MCU_SW_RESET;
-	} else if (csr & (RCC_CSR_IWDGRSTF|RCC_CSR_WWDGRSTF) ) {
-		rv = MCU_WATCHDOG_RESET;
-	} else if ( csr & RCC_CSR_PORRSTF ) {
-		rv = MCU_POWER_ON_RESET;
-	} else {
-		rv = MCU_RESET_UNDEFINED;
-	}
-
+	rv = MCU_SW_RESET;
 	return rv;
 }
 
@@ -465,12 +366,13 @@ Mcu_ResetType Mcu_GetResetReason(void) {
 Mcu_RawResetType Mcu_GetResetRawValue(void) {
 	VALIDATE_W_RV( ( 1 == Mcu_Global.initRun ), MCU_GETRESETREASON_SERVICE_ID, MCU_E_UNINIT, MCU_GETRESETRAWVALUE_UNINIT_RV );
 
-	if (!Mcu_Global.initRun) {
+	if (!Mcu_Global.initRun) 
+  {
 		return MCU_GETRESETRAWVALUE_UNINIT_RV;
-	} else {
-		return (RCC->CSR) & (RCC_CSR_RMVF | RCC_CSR_PINRSTF | RCC_CSR_PORRSTF
-				| RCC_CSR_SFTRSTF | RCC_CSR_IWDGRSTF | RCC_CSR_WWDGRSTF
-				| RCC_CSR_LPWRRSTF);
+	} 
+  else 
+  {
+		return MCU_GETRESETRAWVALUE_NORESETREG_RV;
 	}
 	return 0;
 }
@@ -526,31 +428,6 @@ uint32_t McuE_GetSystemClock(void)
 #endif
 
   return f_sys;
-}
-
-/**
- * Get the peripheral clock in Hz for a specific device
- */
-uint32_t McuE_GetPeripheralClock(McuE_PeriperalClock_t type)
-{
-	uint32_t res = 0;
-
-	switch(type)
-	{
-	case PERIPHERAL_CLOCK_AHB:
-		res = McuE_GetSystemClock();
-		break;
-	case PERIPHERAL_CLOCK_APB1:
-		res = McuE_GetSystemClock() / 2;
-		break;
-	case PERIPHERAL_CLOCK_APB2:
-		res = McuE_GetSystemClock();
-		break;
-	default:
-		break;
-	}
-
-	return res;
 }
 
 

@@ -1,18 +1,6 @@
-/* -------------------------------- Arctic Core ------------------------------
- * Arctic Core - the open source AUTOSAR platform http://arccore.com
- *
- * Copyright (C) 2009  ArcCore AB <contact@arccore.com>
- *
- * This source code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 as published by the
- * Free Software Foundation; See <http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt>.
- *
- * This program is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * for more details.
- * -------------------------------- Arctic Core ------------------------------*/
-
+/********************************************************************
+ * (C) DaVinci Engineering GmbH 2022
+ ********************************************************************/
 #ifndef PORT_H_
 #define PORT_H_
 
@@ -26,37 +14,21 @@
 
 #include "Std_Types.h"
 
-#include "Port_Cfg.h" /** @req PORT130 */
+#include "Port_Cfg.h"
 
-#if (PORT_VERSION_INFO_API == STD_ON)
-void Port_GetVersionInfo(Std_VersionInfoType *versionInfo);
-#endif
-
-/** @name Error Codes */
-/** @req PORT051 */
-/** @req PORT116 */
 #define PORT_E_PARAM_PIN              0x0a
 #define PORT_E_DIRECTION_UNCHANGEABLE 0x0b
 #define PORT_E_PARAM_CONFIG           0x0c
 #define PORT_E_PARAM_INVALID_MODE     0x0d
 #define PORT_E_MODE_UNCHANGEABLE      0x0e
 #define PORT_E_UNINIT                 0x0f
-//@}
 
-/** @name Service id's */
-//@{
 #define PORT_INIT_ID                    0x00
 #define PORT_SET_PIN_DIRECTION_ID       0x01
 #define PORT_REFRESH_PORT_DIRECTION_ID  0x02
 #define PORT_GET_VERSION_INFO_ID        0x03
 #define PORT_SET_PIN_MODE_ID            0x04
-//@}
 
-/** @req PORT046
- * The type Port_PinDirectionType is a type for defining the direction of a Port Pin.
- * PORT_PIN_IN Sets port pin as input. 
- * PORT_PIN_OUT  Sets port pin as output. 
- */
 typedef enum
 {
     PORT_PIN_IN = 0, 

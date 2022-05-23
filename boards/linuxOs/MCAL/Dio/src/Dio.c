@@ -20,7 +20,7 @@
 #include "Det.h"
 #endif
 #include <string.h>
-#include "stm32f10x_gpio.h"
+//#include "stm32f10x_gpio.h"
 
 typedef GPIO_TypeDef* GPIO_TypeDefPtr;
 const GPIO_TypeDefPtr GPIO_ports[] = { GPIOA, GPIOB, GPIOC, GPIOD, GPIOE, GPIOF };

@@ -225,7 +225,6 @@ void renderBoard(boardDefinition *bcfg)
 
     WINDOW *my_win;
 	int board_width, board_height;
-	int ch;
 
 	initscr();			/* Start curses mode 		*/
 	cbreak();	 		/* Line buffering disabled, Pass on
@@ -247,12 +246,6 @@ void renderBoard(boardDefinition *bcfg)
     wrefresh(button_win);
     wrefresh(led_win);
     wrefresh(my_win);
-	while((ch = getch()) != KEY_F(12))
-	{	
-	}
-		
-	endwin();			/* End curses mode		  */
-
 }
 
 
