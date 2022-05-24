@@ -37,12 +37,20 @@ typedef enum
 
 typedef uint32 Port_PinModeType;
 
+typedef struct _Port_ConfigType
+{
+    uint8_t padCnt;
+    Port_PinDirectionType directionType;
+} Port_ConfigType;
+
 void Port_Init(const Port_ConfigType *configType);
 
+#if 0
 void Port_SetPinDirection(Port_PinType pin, Port_PinDirectionType direction);
+void Port_SetPinMode(Port_PinType Pin, Port_PinModeType Mode);
+#endif
 
 void Port_RefreshPortDirection(void);
 
-void Port_SetPinMode(Port_PinType Pin, Port_PinModeType Mode);
 
 #endif

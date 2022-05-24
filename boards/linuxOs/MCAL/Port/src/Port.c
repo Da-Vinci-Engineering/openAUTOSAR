@@ -16,18 +16,18 @@
 
 #include <string.h>
 #include "MemMap.h"
-#include "Port.h" /** @req PORT131 */
-#include "Det.h"
+#include "Port.h"
+//#include "Det.h"
 
 //#include "SchM_Port.h"
 
-#if 0
 const uint32 *GpioBaseAddr[] =
 {
 	(uint32 *)GPIOA_BASE,
     (uint32 *)GPIOB_BASE,
 };
 
+#if 0
 const uint32 *GpioODRAddr[] =
 {
     (uint32 *)&((GPIO_TypeDef *)GPIOA_BASE)->ODR,
@@ -46,7 +46,6 @@ static Port_StateType _portState = PORT_UNINITIALIZED;
 static Port_ConfigType * _configPtr = NULL;
 
 #if 0
-/** @req PORT107 */
 #if (PORT_DEV_ERROR_DETECT == STD_ON)
 #define VALIDATE_PARAM_CONFIG(_ptr,_api) \
 	if( (_ptr)==((void *)0) ) { \
@@ -77,18 +76,6 @@ static Std_VersionInfoType _Port_VersionInfo =
         .ar_minor_version = (uint8)PORT_AR_MINOR_VERSION,
         .ar_patch_version = (uint8)PORT_AR_PATCH_VERSION, };
 #endif
-
-/** @req PORT140 */
-/** @req PORT041 Comment: To reduce flash usage the configuration tool can disable configuration of some ports  */
-/** @req PORT078 See environment i.e Ecu State Manager */
-/** @req PORT042 */
-/** @req PORT113 Number 2 in list is applicable for all pins. */
-/** @req PORT043 Comment: Output value is set before direction */
-/** @req PORT071 See environment i.e Ecu State Manager */
-/** @req PORT002 The _portState varialble is initialised. */
-/** @req PORT003 See environment i.e Ecu State Manager */
-/** @req PORT055 Comment: Output value is set before direction */
-/** @req PORT121 */
 
 #endif
 
@@ -122,11 +109,8 @@ void Port_Init(const Port_ConfigType *configType)
     return;
 }
 
-/** @req PORT141 */
-/** @req PORT063 */
-/** @req PORT054 */
-/** @req PORT086 */
-#if ( PORT_SET_PIN_DIRECTION_API == STD_ON )
+
+#if 0
 void Port_SetPinDirection( Port_PinType pin, Port_PinDirectionType direction )
 {
   VALIDATE_STATE_INIT(PORT_SET_PIN_DIRECTION_ID);
@@ -167,10 +151,6 @@ void Port_SetPinDirection( Port_PinType pin, Port_PinDirectionType direction )
 }
 #endif
 
-/** @req PORT066 */
-/** @req PORT142 */
-/** @req PORT060 */
-/** @req PORT061 */
 void Port_RefreshPortDirection(void)
 {
     VALIDATE_STATE_INIT(PORT_REFRESH_PORT_DIRECTION_ID);
@@ -180,10 +160,6 @@ void Port_RefreshPortDirection(void)
 }
 
 #if 0
-/** req PORT143 */
-/** req PORT102 */
-/** req PORT103 */
-#if (PORT_VERSION_INFO_API == STD_ON)
 void Port_GetVersionInfo(Std_VersionInfoType* versionInfo)
 {
     VALIDATE_STATE_INIT(PORT_GET_VERSION_INFO_ID);
@@ -192,10 +168,7 @@ void Port_GetVersionInfo(Std_VersionInfoType* versionInfo)
 }
 #endif
 
-/** req PORT145 */
-/** req PORT125 */
-/** req PORT128 */
-#if (PORT_SET_PIN_MODE_API == STD_ON)
+#if 0
 void Port_SetPinMode(Port_PinType Pin, Port_PinModeType Mode)
 {
     VALIDATE_STATE_INIT(PORT_SET_PIN_MODE_ID);
@@ -207,5 +180,4 @@ void Port_SetPinMode(Port_PinType Pin, Port_PinModeType Mode)
 
     return;
 }
-#endif
 #endif

@@ -5,6 +5,8 @@
 #include <form.h>
 #include <ncurses.h>
 
+#include "Port.h"
+
 typedef struct _win_border_struct {
 	chtype 	ls, rs, ts, bs, 
 	 	tl, tr, bl, br;
