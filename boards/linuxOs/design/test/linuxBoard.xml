@@ -4,4 +4,8 @@
         <button name="Button_1" hsize="15" vsize="4" label="Push" start_status="off"/>
         <led name="Led_1" hsize="15" vsize="4" start_status="off"/>
     </components>
+    <connections>
+        <gpio num=="001" pinmodetype="0" portModeType="GEN" portPinDirectionType = "0" />     
+        <gpio num=="002" pinmodetype="1" portModeType="GEN" portPinDirectionType = "0" />     
+    </connections>
 </board>

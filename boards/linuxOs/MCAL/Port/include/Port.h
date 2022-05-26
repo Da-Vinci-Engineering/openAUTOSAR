@@ -12,6 +12,7 @@
 #define PORT_AR_MINOR_VERSION 1
 #define PORT_AR_PATCH_VERSION 0
 
+#include <stdint.h>
 #include "Std_Types.h"
 
 #include "Port_Cfg.h"
@@ -35,11 +36,13 @@ typedef enum
     PORT_PIN_OUT
 } Port_PinDirectionType;
 
-typedef uint32 Port_PinModeType;
+typedef uint8_t  Port_PinType;
+typedef uint32_t Port_PinModeType;
 
 typedef struct _Port_ConfigType
 {
-    uint8_t padCnt;
+    Port_PinType          portType;
+    Port_PinModeType      portModeType;
     Port_PinDirectionType directionType;
 } Port_ConfigType;
 
