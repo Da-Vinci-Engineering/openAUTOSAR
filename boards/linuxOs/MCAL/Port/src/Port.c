@@ -21,13 +21,14 @@
 
 //#include "SchM_Port.h"
 
+#if 0
+
 const uint32 *GpioBaseAddr[] =
 {
 	(uint32 *)GPIOA_BASE,
     (uint32 *)GPIOB_BASE,
 };
 
-#if 0
 const uint32 *GpioODRAddr[] =
 {
     (uint32 *)&((GPIO_TypeDef *)GPIOA_BASE)->ODR,
@@ -37,6 +38,8 @@ const uint32 *GpioODRAddr[] =
 
 #endif 
 
+#if 0
+
 typedef enum
 {
     PORT_UNINITIALIZED = 0, PORT_INITIALIZED,
@@ -45,7 +48,6 @@ typedef enum
 static Port_StateType _portState = PORT_UNINITIALIZED;
 static Port_ConfigType * _configPtr = NULL;
 
-#if 0
 #if (PORT_DEV_ERROR_DETECT == STD_ON)
 #define VALIDATE_PARAM_CONFIG(_ptr,_api) \
 	if( (_ptr)==((void *)0) ) { \
@@ -81,9 +83,7 @@ static Std_VersionInfoType _Port_VersionInfo =
 
 void Port_Init(const Port_ConfigType *configType)
 {
-  VALIDATE_PARAM_CONFIG(configType, PORT_INIT_ID); /** @req PORT105 */
-  volatile const uint32 *gpioAddr;
-
+#if 0
   for (uint8_t i = 0; i < configType->padCnt; i++)
   {
 	  /* Configure pin. */
@@ -97,16 +97,15 @@ void Port_Init(const Port_ConfigType *configType)
 	  *((GpioPinOutLevel_Type *)gpioAddr) = configType->outConfig[i];
   }
 
-#if 0
 	// Enable remaps
 	for (int portIndex = 0; portIndex < configType->remapCount; portIndex++) {
 		GPIO_PinRemapConfig(configType->remaps[portIndex], ENABLE);
 	}
-#endif 
 
     _portState = PORT_INITIALIZED;
     _configPtr = (Port_ConfigType *)configType;
     return;
+#endif 
 }
 
 

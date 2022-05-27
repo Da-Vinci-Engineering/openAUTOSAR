@@ -47,12 +47,26 @@ main(int argc, char **argv)
         printf("Node: %s - hsize: %d - vsize: %d\n", bcfg.container.name, bcfg.container.hsize, bcfg.container.vsize);
         printf("Node: %s - hsize: %d - vsize: %d - start_status: %d\n", bcfg.btn.name, bcfg.btn.hsize, bcfg.btn.vsize, bcfg.btn.btnStatus);
         printf("Node: %s - hsize: %d - vsize: %d - start_status: %d\n", bcfg.ld.name, bcfg.ld.hsize, bcfg.ld.vsize, bcfg.ld.ledStatus);
+        printf("GPIO Connections: %d\n", bcfg.nPorts);
+        printf("GPIO: 0 - pintype: %d, pinModeType: %d, pinDirectionType: %d\n",
+                             bcfg.portCfgs[0].pinType, 
+                             bcfg.portCfgs[0].pinModeType, 
+                             bcfg.portCfgs[0].pinDirectionType 
+                             );
+        printf("GPIO: 1 - pintype: %d, pinModeType: %d, pinDirectionType: %d\n",
+                             bcfg.portCfgs[1].pinType, 
+                             bcfg.portCfgs[1].pinModeType, 
+                             bcfg.portCfgs[1].pinDirectionType 
+                             );
     }  
 
     renderBoard(&bcfg);
 
 	while((ch = getch()) != KEY_F(12))
 	{	
+        toggleButtonStatus(&(bcfg.btn));
+        toggleLedStatus(&(bcfg.ld));
+        renderBoard(&bcfg);
 	}
 		
 	endwin();			/* End curses mode		  */

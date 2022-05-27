@@ -41,9 +41,9 @@ typedef uint32_t Port_PinModeType;
 
 typedef struct _Port_ConfigType
 {
-    Port_PinType          portType;
-    Port_PinModeType      portModeType;
-    Port_PinDirectionType directionType;
+    Port_PinType          pinType;
+    Port_PinModeType      pinModeType;
+    Port_PinDirectionType pinDirectionType;
 } Port_ConfigType;
 
 void Port_Init(const Port_ConfigType *configType);

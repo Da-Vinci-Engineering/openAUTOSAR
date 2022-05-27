@@ -111,6 +111,7 @@ int getBoardDefinition(char *descriptionFileName, boardDefinition *bcfg)
 void getBoardComponents(xmlNode *a_node, boardDefinition *bcfg)
 {
     xmlNode *cur_node = NULL;
+    uint32_t gpios_configured = 0;
 
     for (cur_node = a_node; cur_node != NULL; cur_node = cur_node->next)
     {
@@ -127,6 +128,14 @@ void getBoardComponents(xmlNode *a_node, boardDefinition *bcfg)
             if (strcmp((char *)cur_node->name, "led") == 0)
             {
                 getLedData(a_node, cur_node, bcfg);
+            }
+            if (strcmp((char *)cur_node->name, "connections") == 0)
+            {
+                getNPorts(a_node, cur_node, bcfg);
+            }
+            if (strcmp((char *)cur_node->name, "gpio") == 0)
+            {
+                getGPIO(a_node, cur_node, bcfg, &gpios_configured);
             }
         }
         getBoardComponents(cur_node->children, bcfg);
@@ -220,6 +229,50 @@ void getLedData(xmlNode *root_node, xmlNode *led_node, boardDefinition *bcfg)
     xmlFree(startStatus);
 }
 
+void getNPorts(xmlNode *root_node, xmlNode *connections_node, boardDefinition *bcfg)
+{
+
+    xmlAttr *attribute = connections_node->properties;
+    // Attribute: nports
+    xmlChar *nPorts = xmlNodeListGetString(root_node->doc, attribute->children, 1);
+    bcfg->nPorts = atoi((char *)nPorts);
+    bcfg->portCfgs = 
+        (Port_ConfigType *) malloc (bcfg->nPorts * sizeof(Port_ConfigType));
+    xmlFree(nPorts);
+}
+
+void getGPIO(xmlNode *root_node, xmlNode *gpio_node, boardDefinition *bcfg, uint32_t *gpios_configured)
+{
+
+    xmlAttr *attribute = gpio_node->properties;
+    if (*gpios_configured < bcfg->nPorts)
+    {
+        // Attribute: pintype
+        xmlChar *pintype = xmlNodeListGetString(root_node->doc, attribute->children, 1);
+        bcfg->portCfgs[*gpios_configured].pinType = atoi((char *)pintype);
+        xmlFree(pintype);
+        attribute = attribute->next;
+        // Attribute: pinModeType
+        xmlChar *pinModeType = xmlNodeListGetString(root_node->doc, attribute->children, 1);
+        bcfg->portCfgs[*gpios_configured].pinModeType = atoi((char *)pinModeType);
+        xmlFree(pinModeType);
+        attribute = attribute->next;
+        // Attribute: pinDirectionType
+        xmlChar *pinDirectionType = xmlNodeListGetString(root_node->doc, attribute->children, 1);
+        uint8_t intPinDirectionType = atoi((char *)pinDirectionType);
+        if (intPinDirectionType == 0)
+        {
+            bcfg->portCfgs[*gpios_configured].pinDirectionType = PORT_PIN_IN;
+        }
+        else
+        {
+            bcfg->portCfgs[*gpios_configured].pinDirectionType = PORT_PIN_OUT;
+        }
+        xmlFree(pinDirectionType);
+        ++(*gpios_configured);
+    }
+}
+
 void renderBoard(boardDefinition *bcfg)
 {
 
@@ -259,6 +312,30 @@ WINDOW *create_newwin(int height, int width, int starty, int startx)
 	wrefresh(local_win);		/* Show that box 		*/
 
 	return local_win;
+}
+
+void toggleButtonStatus(button * btn)
+{
+    if (btn->btnStatus == BTN_OFF)
+    {
+        btn->btnStatus = BTN_ON;
+    }
+    else
+    {
+        btn->btnStatus = BTN_OFF;         
+    }
+}
+
+void toggleLedStatus(led * ld)
+{
+    if (ld->ledStatus == LED_OFF)
+    {
+        ld->ledStatus = LED_ON;
+    }
+    else
+    {
+        ld->ledStatus = LED_OFF;         
+    }
 }
 
 WINDOW *create_newsubwin(WINDOW * parent, int height, int width, int starty, int startx)

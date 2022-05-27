@@ -4,6 +4,8 @@
 #ifndef CREATEBOARD_H_
 #define CREATEBOARD_H_
 
+#include "Port.h"
+
 enum buttonStatus
 {
     BTN_OFF,
@@ -66,7 +68,20 @@ typedef struct _boardDefinition
     board container;
     button btn;
     led ld;
+    uint32_t nPorts;
+    Port_ConfigType *portCfgs;
 } boardDefinition;
+
+/**
+ * @brief Changes the status of a button
+ */
+void toggleButtonStatus(button * btn);
+
+/**
+ * @brief Changes the status of an LED
+ */
+void toggleLedStatus(led * led);
+
 
 /**
  * @brief Reads the config file and fills the structure with the file name
@@ -120,6 +135,16 @@ void getButtonData(xmlNode *root_node, xmlNode *board_node, boardDefinition *bcf
  * @param bcfg pointer to the structure to be filled with data
  */
 void getLedData(xmlNode *root_node, xmlNode *board_node, boardDefinition *bcfg);
+
+/**
+ * @brief Reads the the gpio ports data from the definition file
+ * @param root_node pointer to node with the board name
+ * @param connections_node pointer to current node for the board
+ * @param bcfg pointer to the structure to be filled with data
+ */
+void getNPorts(xmlNode *root_node, xmlNode *connections_node, boardDefinition *bcfg);
+
+void getGPIO(xmlNode *root_node, xmlNode *gpio_node, boardDefinition *bcfg, uint32_t *gpios_configured);
 
 /**
  * @brief creates a grphical rendering of the board
