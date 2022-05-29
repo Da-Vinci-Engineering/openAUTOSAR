@@ -59,6 +59,14 @@ typedef struct _led
     enum ledStatus ledStatus;
 } led;
 
+/**
+ * @brief Structure containing GPIO data
+ */
+typedef struct _gpio
+{
+    uint8_t level;
+} GPIO;
+
 
 /**
  * @brief Structure containing the whole definition of the board
@@ -70,6 +78,7 @@ typedef struct _boardDefinition
     led ld;
     uint32_t nPorts;
     Port_ConfigType *portCfgs;
+    GPIO *gpioChannels;
 } boardDefinition;
 
 /**

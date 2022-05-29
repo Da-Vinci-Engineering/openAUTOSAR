@@ -238,6 +238,8 @@ void getNPorts(xmlNode *root_node, xmlNode *connections_node, boardDefinition *b
     bcfg->nPorts = atoi((char *)nPorts);
     bcfg->portCfgs = 
         (Port_ConfigType *) malloc (bcfg->nPorts * sizeof(Port_ConfigType));
+    bcfg->gpioChannels = 
+        (GPIO *) malloc (bcfg->nPorts * sizeof(GPIO));
     xmlFree(nPorts);
 }
 
@@ -247,6 +249,8 @@ void getGPIO(xmlNode *root_node, xmlNode *gpio_node, boardDefinition *bcfg, uint
     xmlAttr *attribute = gpio_node->properties;
     if (*gpios_configured < bcfg->nPorts)
     {
+        // GPIO channel
+        bcfg->gpioChannels[*gpios_configured].level = STD_LOW;
         // Attribute: pintype
         xmlChar *pintype = xmlNodeListGetString(root_node->doc, attribute->children, 1);
         bcfg->portCfgs[*gpios_configured].pinType = atoi((char *)pintype);
